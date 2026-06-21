@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novus IP | Book Consultation</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        .booking-hero {
+            padding: 160px 0 80px;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        /* Multi-step Form */
+        .step-container {
+            display: none;
+            animation: slideInRight 0.4s ease;
+        }
+        .step-container.active {
+            display: block;
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .progress-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .progress-indicator::before {
+            content: '';
+            position: absolute;
+            top: 15px; left: 0; width: 100%; height: 2px;
+            background: var(--border-color);
+            z-index: 1;
+        }
+        .progress-step {
+            position: relative;
+            z-index: 2;
+            background: var(--bg-primary);
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center; justify-content: center;
+            border: 2px solid var(--border-color);
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all var(--transition-fast);
+        }
+        .progress-step.active {
+            border-color: var(--brand-indigo);
+            background: var(--brand-indigo);
+            color: var(--brand-indigo);
+        }
+        
+        .form-control, .form-select {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px 15px;
+        }
+        .form-control:focus, .form-select:focus {
+            background: var(--bg-primary);
+            border-color: var(--brand-indigo);
+            box-shadow: none;
+            color: var(--text-primary);
+        }
+        
+        /* Calendar */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+        .cal-header { font-weight: 600; color: var(--text-secondary); font-size: 0.9rem; }
+        .cal-day {
+            padding: 15px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .cal-day:hover:not(.disabled) {
+            border-color: var(--brand-indigo);
+            background: var(--brand-cyan-muted);
+        }
+        .cal-day.disabled { opacity: 0.3; cursor: not-allowed; }
+        .cal-day.selected {
+            background: var(--brand-indigo);
+            color: var(--brand-indigo);
+            border-color: var(--brand-indigo);
+            font-weight: bold;
+        }
+        
+        .time-slot {
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all var(--transition-fast);
+        }
+        .time-slot:hover { border-color: var(--brand-indigo); }
+        .time-slot.selected { background: var(--brand-indigo); color: var(--brand-indigo); border-color: var(--brand-indigo); }
+        
+        /* Experts */
+        .expert-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+        .expert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--brand-indigo);
+        }
+        .expert-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="text-indigo" style="margin-right:8px">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="M12 8v4"></path>
+                    <path d="M12 16h.01"></path>
+                </svg>
+                Novus<span>IP</span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Home 1</a>
+                <a href="index-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            
+                <div class="mobile-only-actions d-xl-none d-flex gap-3 align-items-center mt-3 pt-3 border-top border-secondary">
+                    <button class="icon-btn theme-toggle-btn" title="Toggle Theme">
+                        <i class="bi bi-moon"></i>
+                    </button>
+                    <button class="icon-btn rtl-toggle-btn" title="Toggle RTL">
+                        <i class="bi bi-text-right"></i>
+                    </button>
+                    <a href="signup.html" class="btn-premium primary w-100 text-center">Sign Up</a>
+                </div>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn theme-toggle-btn d-none d-xl-flex" title="Toggle Theme">
+                    <i class="bi bi-moon"></i>
+                </button>
+                <button class="icon-btn rtl-toggle-btn d-none d-xl-flex" title="Toggle RTL">
+                    <i class="bi bi-text-right"></i>
+                </button>
+                <a href="signup.html" class="btn-premium primary d-none d-xl-flex">Sign Up</a>
+                <button class="icon-btn mobile-toggle">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero -->
+    <section class="booking-hero text-center">
+        <div class="container" data-aos="fade-up">
+            <h1 class="display-4 fw-bold mb-4">Book Your Strategy Session</h1>
+            <p class="lead text-secondary mx-auto" style="max-width: 600px;">Schedule a confidential video call with our patent attorneys to discuss your IP protection strategy.</p>
+        </div>
+    </section>
+
+    <!-- 2 & 3. Booking Form & Calendar -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="premium-card p-4 p-md-5">
+                        
+                        <div class="progress-indicator">
+                            <div class="progress-step active" id="ind-1">1</div>
+                            <div class="progress-step" id="ind-2">2</div>
+                            <div class="progress-step" id="ind-3">3</div>
+                        </div>
+                        
+                        <form id="booking-form">
+                            <!-- Step 1: Details -->
+                            <div class="step-container active" id="step-1">
+                                <h3 class="mb-4">1. Your Details</h3>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label text-secondary small fw-bold">First Name</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label text-secondary small fw-bold">Last Name</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label text-secondary small fw-bold">Email Address</label>
+                                        <input type="email" class="form-control" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label text-secondary small fw-bold">Inquiry Type</label>
+                                        <select class="form-select">
+                                            <option>New Patent Filing</option>
+                                            <option>Office Action Response</option>
+                                            <option>Trademark Registration</option>
+                                            <option>General IP Strategy</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="text-end mt-4">
+                                    <button type="button" class="btn-premium primary next-step">Next: Select Time &rarr;</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2: Calendar -->
+                            <div class="step-container" id="step-2">
+                                <h3 class="mb-4">2. Select Date & Time</h3>
+                                <div class="row g-4">
+                                    <div class="col-md-7">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <button type="button" class="btn btn-sm btn-light border"><i class="bi bi-chevron-left"></i></button>
+                                            <h6 class="mb-0 fw-bold">July 2026</h6>
+                                            <button type="button" class="btn btn-sm btn-light border"><i class="bi bi-chevron-right"></i></button>
+                                        </div>
+                                        <div class="calendar-grid">
+                                            <div class="cal-header">Su</div><div class="cal-header">Mo</div><div class="cal-header">Tu</div><div class="cal-header">We</div><div class="cal-header">Th</div><div class="cal-header">Fr</div><div class="cal-header">Sa</div>
+                                            <!-- Dummy Dates -->
+                                            <div class="cal-day disabled">28</div><div class="cal-day disabled">29</div><div class="cal-day disabled">30</div>
+                                            <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day disabled">4</div>
+                                            <div class="cal-day disabled">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day selected">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day disabled">11</div>
+                                            <!-- ... -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 border-start ps-md-4">
+                                        <h6 class="fw-bold mb-3">Available Slots</h6>
+                                        <div class="time-slot">09:00 AM</div>
+                                        <div class="time-slot selected">10:30 AM</div>
+                                        <div class="time-slot">01:00 PM</div>
+                                        <div class="time-slot">03:30 PM</div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button type="button" class="btn-premium outline prev-step">&larr; Back</button>
+                                    <button type="button" class="btn-premium primary next-step">Next: Confirm &rarr;</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3: Confirm -->
+                            <div class="step-container" id="step-3">
+                                <h3 class="mb-4">3. Confirm Details</h3>
+                                <div class="p-4 bg-secondary border border-color rounded-3 mb-4">
+                                    <div class="row">
+                                        <div class="col-6 mb-3">
+                                            <small class="text-secondary fw-bold text-uppercase d-block">Date</small>
+                                            <span class="fs-5">Wed, July 8, 2026</span>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <small class="text-secondary fw-bold text-uppercase d-block">Time</small>
+                                            <span class="fs-5">10:30 AM (EST)</span>
+                                        </div>
+                                        <div class="col-12">
+                                            <small class="text-secondary fw-bold text-uppercase d-block">Type</small>
+                                            <span>Video Conference (Link provided via email)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn-premium outline prev-step">&larr; Back</button>
+                                    <button type="button" class="btn-premium primary" onclick="alert('Booking confirmed!')">Confirm Booking</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Available Experts -->
+    <section class="section-padding bg-secondary">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2>Meet Our Technical Specialists</h2>
+                <p class="text-secondary mx-auto" style="max-width: 600px;">Your consultation will be matched with the attorney whose technical background aligns with your invention.</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Expert" class="expert-img">
+                        <div class="p-3 text-center">
+                            <h6 class="mb-0">Dr. Elena Rostova</h6>
+                            <small class="text-indigo">Biotechnology (Ph.D)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="Expert" class="expert-img">
+                        <div class="p-3 text-center">
+                            <h6 class="mb-0">Jonathan Reed</h6>
+                            <small class="text-indigo">Software & AI (MS CS)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80" alt="Expert" class="expert-img">
+                        <div class="p-3 text-center">
+                            <h6 class="mb-0">Marcus Chen</h6>
+                            <small class="text-indigo">Semiconductors (MSEE)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" alt="Expert" class="expert-img">
+                        <div class="p-3 text-center">
+                            <h6 class="mb-0">Sarah Jenkins</h6>
+                            <small class="text-indigo">Mechanical Design</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. CTA -->
+    <section class="section-padding text-center bg-dark text-white">
+        <div class="container" data-aos="zoom-in">
+            <h2 class="mb-4">Urgent Filing Deadline?</h2>
+            <p class="lead opacity-75 mb-5 mx-auto" style="max-width: 600px;">If you face an impending 1-year statutory bar or a conference disclosure, please call us immediately rather than booking online.</p>
+            <a href="tel:+18005550199" class="btn-premium primary btn-lg"><i class="bi bi-telephone-fill me-2"></i> 1-800-555-0199</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 footer-widget">
+                    <a href="index.html" class="logo mb-4 d-inline-block">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo"
+                            style="margin-right:8px">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="M12 8v4"></path>
+                            <path d="M12 16h.01"></path>
+                        </svg>
+                        Novus<span>IP</span>
+                    </a>
+                    <p class="mb-4">Premium intellectual property management combining top-tier legal expertise with a
+                        modern SaaS dashboard.</p>
+                    <div class="d-flex gap-3 footer-social">
+                        <a href="#" class="fs-5"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="fs-5"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="fs-5"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 footer-widget">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Firm</a></li>
+                        <li><a href="services.html">Practice Areas</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                        <li><a href="gallery.html">Case Studies</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 footer-widget">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="login.html">Client Portal</a></li>
+                        <li><a href="blog.html">IP Insights</a></li>
+                        <li><a href="#">Filing Guides</a></li>
+                        <li><a href="#">Patent Search</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 footer-widget">
+                    <h4>Newsletter</h4>
+                    <p class="mb-3">Subscribe for the latest updates in patent law and IP strategy.</p>
+                    <form class="d-flex position-relative footer-form">
+                        <input type="email" class="form-control rounded-pill py-3 px-4 w-100 border-color shadow-none"
+                            placeholder="Email address" required style="background: rgba(128,128,128,0.05);">
+                        <button type="submit"
+                            class="btn-premium primary rounded-pill position-absolute end-0 top-0 bottom-0 m-1 px-4 border-0">Subscribe</button>
+                    </form>
+                    <div class="mt-4 d-flex gap-2 flex-wrap">
+                        <span class="badge text-secondary border border-color fw-normal px-3 py-2 rounded-pill"><i
+                                class="bi bi-shield-lock-fill text-indigo me-1"></i> SOC2 Type II Certified</span>
+                        <span class="badge text-secondary border border-color fw-normal px-3 py-2 rounded-pill"><i
+                                class="bi bi-lock-fill text-indigo me-1"></i> 256-bit Encryption</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Novus IP Management Firm. All rights reserved.</div>
+                <div class="d-flex gap-4">
+                    <a href="#" class="text-decoration-none hover-white">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none hover-white">Terms of Service</a>
+                    <a href="#" class="text-decoration-none hover-white"
+                        onclick="window.scrollTo(0,0); return false;">Back to Top <i class="bi bi-arrow-up"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Multi-step logic
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentStep = 1;
+            const nextBtns = document.querySelectorAll('.next-step');
+            const prevBtns = document.querySelectorAll('.prev-step');
+            
+            function updateForm() {
+                document.querySelectorAll('.step-container').forEach(el => el.classList.remove('active'));
+                document.getElementById(`step-${currentStep}`).classList.add('active');
+                
+                document.querySelectorAll('.progress-step').forEach((el, index) => {
+                    if(index < currentStep) {
+                        el.classList.add('active');
+                    } else {
+                        el.classList.remove('active');
+                    }
+                });
+            }
+            
+            nextBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (currentStep < 3) { currentStep++; updateForm(); }
+                });
+            });
+            
+            prevBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (currentStep > 1) { currentStep--; updateForm(); }
+                });
+            });
+            
+            // Dummy Calendar interactions
+            const days = document.querySelectorAll('.cal-day:not(.disabled)');
+            days.forEach(day => {
+                day.addEventListener('click', function() {
+                    days.forEach(d => d.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+            
+            const slots = document.querySelectorAll('.time-slot');
+            slots.forEach(slot => {
+                slot.addEventListener('click', function() {
+                    slots.forEach(s => s.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

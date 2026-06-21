@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novus IP | About Our Firm</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* About Page Styles */
+        .page-hero {
+            padding: 100px 0 100px;
+            background: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.85)), url('https://images.pexels.com/photos/8145446/pexels-photo-8145446.jpeg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+
+        .story-img {
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .timeline-wrapper {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--brand-indigo);
+            transform: translateX(-50%);
+        }
+
+        .timeline-card {
+            background: var(--bg-primary);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            width: calc(50% - 40px);
+            position: relative;
+        }
+
+        .timeline-card.left {
+            margin-right: auto;
+        }
+
+        .timeline-card.right {
+            margin-left: auto;
+        }
+
+        .timeline-card::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 2px;
+            background: var(--brand-indigo);
+        }
+
+        .timeline-card.left::after {
+            right: -20px;
+        }
+
+        .timeline-card.right::after {
+            left: -20px;
+        }
+
+        .why-icon {
+            font-size: 2.5rem;
+            color: var(--brand-indigo);
+            margin-bottom: 1rem;
+            animation: bounce 3s infinite ease-in-out;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .leader-card {
+            text-align: center;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-normal);
+        }
+
+        .leader-img-wrapper {
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .leader-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.6s ease;
+        }
+
+        .leader-card:hover .leader-img {
+            transform: scale(1.1);
+        }
+
+        .leader-info {
+            padding: 20px;
+            background: var(--bg-primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="text-indigo" style="margin-right:8px">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="M12 8v4"></path>
+                    <path d="M12 16h.01"></path>
+                </svg>
+                Novus<span>IP</span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Home 1</a>
+                <a href="index-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            
+                <div class="mobile-only-actions d-xl-none d-flex gap-3 align-items-center mt-3 pt-3 border-top border-secondary">
+                    <button class="icon-btn theme-toggle-btn" title="Toggle Theme">
+                        <i class="bi bi-moon"></i>
+                    </button>
+                    <button class="icon-btn rtl-toggle-btn" title="Toggle RTL">
+                        <i class="bi bi-text-right"></i>
+                    </button>
+                    <a href="signup.html" class="btn-premium primary w-100 text-center">Sign Up</a>
+                </div>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn theme-toggle-btn d-none d-xl-flex" title="Toggle Theme">
+                    <i class="bi bi-moon"></i>
+                </button>
+                <button class="icon-btn rtl-toggle-btn d-none d-xl-flex" title="Toggle RTL">
+                    <i class="bi bi-text-right"></i>
+                </button>
+                <a href="signup.html" class="btn-premium primary d-none d-xl-flex">Sign Up</a>
+                <button class="icon-btn mobile-toggle">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero -->
+    <section class="page-hero text-center text-white">
+        <div class="container" data-aos="fade-up">
+            <h1 class="display-3 fw-bold mb-4 text-white">Our Legacy of Protection</h1>
+            <p class="lead opacity-75 mx-auto text-light" style="max-width: 700px;">Since our inception, we have been at the
+                forefront of defending the world's most groundbreaking technologies.</p>
+        </div>
+    </section>
+
+    <!-- 2. Company Story -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                    <img src="https://images.pexels.com/photos/7876050/pexels-photo-7876050.jpeg" alt="Corporate Office"
+                        class="img-fluid story-img">
+                </div>
+                <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
+                    <h6 class="text-indigo fw-bold text-uppercase mb-2">Our Origins</h6>
+                    <h2 class="mb-4">Bridging Engineering and Law</h2>
+                    <p>Founded by former USPTO examiners and lead engineers, Novus IP was built on the principle that
+                        true intellectual property protection requires an intimate understanding of the underlying
+                        technology.</p>
+                    <p>We saw a gap between brilliant innovators and traditional law firms. Our solution was to create a
+                        modern, tech-driven practice equipped with a proprietary SaaS dashboard, bringing transparency
+                        and speed to patent prosecution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Expertise Timeline -->
+    <section class="section-padding bg-secondary">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2>A Decade of Milestones</h2>
+            </div>
+
+            <div class="timeline-wrapper">
+                <div class="timeline-card left" data-aos="fade-up">
+                    <h4 class="text-indigo">2016</h4>
+                    <h5>Firm Establishment</h5>
+                    <p class="text-secondary mb-0">Founded in Silicon Valley with a focus on semiconductor patents.</p>
+                </div>
+                <div class="timeline-card right mt-5" data-aos="fade-up">
+                    <h4 class="text-indigo">2019</h4>
+                    <h5>European Expansion</h5>
+                    <p class="text-secondary mb-0">Opened our Munich office to handle direct EPO filings.</p>
+                </div>
+                <div class="timeline-card left mt-5" data-aos="fade-up">
+                    <h4 class="text-indigo">2022</h4>
+                    <h5>Client Dashboard Launch</h5>
+                    <p class="text-secondary mb-0">Revolutionized client communication with our proprietary tracking
+                        system.</p>
+                </div>
+                <div class="timeline-card right mt-5" data-aos="fade-up">
+                    <h4 class="text-indigo">2026</h4>
+                    <h5>AI Patent Leadership</h5>
+                    <p class="text-secondary mb-0">Recognized as the top filer for machine learning and neural network
+                        patents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Why Choose Us -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2>The Novus Advantage</h2>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="premium-card h-100 p-4 border border-color rounded-4 text-start hover-lift"
+                        style="transition: transform 0.3s; cursor:pointer;"
+                        onmouseover="this.style.transform='translateY(-5px)'"
+                        onmouseout="this.style.transform='translateY(0)'">
+                        <i class="bi bi-shield-check why-icon"></i>
+                        <h4>Technical Pedigree</h4>
+                        <p class="text-secondary mb-0">All attorneys hold advanced degrees (MS/PhD) in specialized
+                            engineering fields.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="premium-card h-100 p-4 border border-color rounded-4 text-start hover-lift"
+                        style="transition: transform 0.3s; cursor:pointer;"
+                        onmouseover="this.style.transform='translateY(-5px)'"
+                        onmouseout="this.style.transform='translateY(0)'">
+                        <i class="bi bi-display why-icon"></i>
+                        <h4>Digital First</h4>
+                        <p class="text-secondary mb-0">Real-time tracking of office actions and deadlines through our
+                            custom portal.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="premium-card h-100 p-4 border border-color rounded-4 text-start hover-lift"
+                        style="transition: transform 0.3s; cursor:pointer;"
+                        onmouseover="this.style.transform='translateY(-5px)'"
+                        onmouseout="this.style.transform='translateY(0)'">
+                        <i class="bi bi-globe why-icon"></i>
+                        <h4>Global Network</h4>
+                        <p class="text-secondary mb-0">Direct filing capabilities in the US and EU, with trusted
+                            partners in 100+ countries.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Leadership -->
+    <section class="section-padding bg-secondary">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2>Our Partners</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="leader-card">
+                        <div class="leader-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
+                                alt="Partner" class="leader-img">
+                        </div>
+                        <div class="leader-info">
+                            <h5>Jonathan Reed, Esq.</h5>
+                            <p class="text-indigo mb-0">Managing Partner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="leader-card">
+                        <div class="leader-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
+                                alt="Partner" class="leader-img">
+                        </div>
+                        <div class="leader-info">
+                            <h5>Dr. Elena Rostova</h5>
+                            <p class="text-indigo mb-0">Head of Biotech</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="leader-card">
+                        <div class="leader-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80"
+                                alt="Partner" class="leader-img">
+                        </div>
+                        <div class="leader-info">
+                            <h5>Marcus Chen</h5>
+                            <p class="text-indigo mb-0">Head of Software IP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 footer-widget">
+                    <a href="index.html" class="logo mb-4 d-inline-block">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo"
+                            style="margin-right:8px">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="M12 8v4"></path>
+                            <path d="M12 16h.01"></path>
+                        </svg>
+                        Novus<span>IP</span>
+                    </a>
+                    <p class="mb-4">Premium intellectual property management combining top-tier legal expertise with a
+                        modern SaaS dashboard.</p>
+                    <div class="d-flex gap-3 footer-social">
+                        <a href="#" class="fs-5"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="fs-5"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="fs-5"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 footer-widget">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Firm</a></li>
+                        <li><a href="services.html">Practice Areas</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                        <li><a href="gallery.html">Case Studies</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 footer-widget">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="login.html">Client Portal</a></li>
+                        <li><a href="blog.html">IP Insights</a></li>
+                        <li><a href="#">Filing Guides</a></li>
+                        <li><a href="#">Patent Search</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 footer-widget">
+                    <h4>Newsletter</h4>
+                    <p class="mb-3">Subscribe for the latest updates in patent law and IP strategy.</p>
+                    <form class="d-flex position-relative footer-form">
+                        <input type="email" class="form-control rounded-pill py-3 px-4 w-100 border-color shadow-none"
+                            placeholder="Email address" required style="background: rgba(128,128,128,0.05);">
+                        <button type="submit"
+                            class="btn-premium primary rounded-pill position-absolute end-0 top-0 bottom-0 m-1 px-4 border-0">Subscribe</button>
+                    </form>
+                    <div class="mt-4 d-flex gap-2 flex-wrap">
+                        <span class="badge text-secondary border border-color fw-normal px-3 py-2 rounded-pill"><i
+                                class="bi bi-shield-lock-fill text-indigo me-1"></i> SOC2 Type II Certified</span>
+                        <span class="badge text-secondary border border-color fw-normal px-3 py-2 rounded-pill"><i
+                                class="bi bi-lock-fill text-indigo me-1"></i> 256-bit Encryption</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Novus IP Management Firm. All rights reserved.</div>
+                <div class="d-flex gap-4">
+                    <a href="#" class="text-decoration-none hover-white">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none hover-white">Terms of Service</a>
+                    <a href="#" class="text-decoration-none hover-white"
+                        onclick="window.scrollTo(0,0); return false;">Back to Top <i class="bi bi-arrow-up"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

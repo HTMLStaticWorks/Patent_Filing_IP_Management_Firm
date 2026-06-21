@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novus IP | Global Patent Strategy (Home 2)</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Home-2 Specific Styles */
+
+        /* 1. Hero Split-screen */
+        .hero-split {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            background: var(--bg-primary);
+        }
+
+        .split-left {
+            padding: 80px 5%;
+        }
+
+        .split-right {
+            height: calc(100vh - var(--header-height));
+            background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            position: relative;
+        }
+
+        .split-right::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--bg-primary) 0%, transparent 100%);
+        }
+
+        /* 2. Global Map */
+        .map-section {
+            background-color: var(--brand-indigo);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .world-map-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .map-marker {
+            position: relative;
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .map-marker:hover {
+            transform: translateY(-10px);
+            color: var(--brand-indigo);
+        }
+
+        .marker-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--brand-indigo);
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            box-shadow: 0 0 15px var(--brand-indigo);
+            animation: pulseMap 2s infinite;
+        }
+
+        @keyframes pulseMap {
+            0% {
+                box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(79, 70, 229, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
+            }
+        }
+
+        /* 3. Industry Expertise */
+        .expertise-section {
+            padding: 120px 0;
+            background: var(--bg-secondary);
+        }
+
+        .expertise-item {
+            background: var(--bg-primary);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .expertise-item:hover {
+            transform: scale(1.05);
+            background: var(--brand-indigo);
+            color: white;
+            border-color: var(--brand-indigo);
+        }
+
+        .expertise-item:hover .text-secondary {
+            color: #cbd5e1 !important;
+        }
+
+        .expertise-icon {
+            font-size: 3rem;
+            color: var(--brand-indigo);
+            margin-bottom: 20px;
+            transition: transform 0.4s;
+        }
+
+        .expertise-item:hover .expertise-icon {
+            transform: scale(1.2) translateX(10px);
+        }
+
+        /* 4. Case Studies (3D Tilt) */
+        .case-study-card {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            height: 400px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        .case-study-card:hover {
+            transform: rotateY(10deg) rotateX(5deg);
+            box-shadow: -20px 20px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .case-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .case-study-card:hover .case-img {
+            transform: scale(1.1);
+        }
+
+        .case-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 30px;
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.9) 0%, transparent 100%);
+            color: white;
+            transform: translateZ(30px);
+            /* 3D pop effect */
+        }
+
+        /* 5. IP Portfolio (Horizontal Scroll) */
+        .portfolio-section {
+            padding: 100px 0;
+            overflow: hidden;
+        }
+
+        .scrolling-wrapper {
+            display: flex;
+            gap: 30px;
+            width: 200%;
+            animation: scrollHorizontal 30s linear infinite;
+        }
+
+        .portfolio-item {
+            flex: 0 0 350px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        @keyframes scrollHorizontal {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* 6. Spotlight CTA */
+        .spotlight-cta {
+            background: #000;
+            color: white;
+            padding: 150px 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .spotlight {
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+            animation: breathe 4s infinite alternate;
+        }
+
+        @keyframes breathe {
+            0% {
+                transform: translateX(-50%) scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateX(-50%) scale(1.1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="text-indigo" style="margin-right:8px">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="M12 8v4"></path>
+                    <path d="M12 16h.01"></path>
+                </svg>
+                Novus<span>IP</span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Home 1</a>
+                <a href="index-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            
+                <div class="mobile-only-actions d-xl-none d-flex gap-3 align-items-center mt-3 pt-3 border-top border-secondary">
+                    <button class="icon-btn theme-toggle-btn" title="Toggle Theme">
+                        <i class="bi bi-moon"></i>
+                    </button>
+                    <button class="icon-btn rtl-toggle-btn" title="Toggle RTL">
+                        <i class="bi bi-text-right"></i>
+                    </button>
+                    <a href="signup.html" class="btn-premium primary w-100 text-center">Sign Up</a>
+                </div>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn theme-toggle-btn d-none d-xl-flex" title="Toggle Theme">
+                    <i class="bi bi-moon"></i>
+                </button>
+                <button class="icon-btn rtl-toggle-btn d-none d-xl-flex" title="Toggle RTL">
+                    <i class="bi bi-text-right"></i>
+                </button>
+                <a href="signup.html" class="btn-premium primary d-none d-xl-flex">Sign Up</a>
+                <button class="icon-btn mobile-toggle">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero Split-screen -->
+    <section class="hero-split">
+        <div class="container-fluid p-0">
+            <div class="row g-0">
+                <div class="col-lg-6 split-left d-flex flex-column justify-content-center">
+                    <div data-aos="fade-right">
+                        <div class="text-indigo fw-bold mb-3 tracking-widest text-uppercase">Global Patent Strategy</div>
+                        <h1 class="display-4 fw-bold mb-4">Engineering Legal Excellence.</h1>
+                        <p class="lead text-secondary mb-5">We transform complex innovations into unassailable IP
+                            assets. Navigate global jurisdictions with confidence using our advanced case tracking
+                            architecture.</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="services.html" class="btn-premium primary btn-lg">Our Expertise</a>
+                            <a href="about.html" class="btn-premium outline btn-lg">Firm Profile</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 split-right" data-aos="fade-left" data-aos-duration="1200">
+                    <!-- Image handled by CSS background for exact splitting -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Global Patent Filing Network -->
+    <section class="map-section">
+        <div class="container position-relative z-2">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="text-white">Global Filing Jurisdictions</h2>
+                <p class="text-light opacity-75">Seamless PCT entries and direct national phase filings.</p>
+            </div>
+
+            <div class="d-flex justify-content-center flex-wrap" data-aos="zoom-in">
+                <div class="map-marker">
+                    <div class="marker-dot"></div>
+                    <div class="fw-bold">USPTO</div>
+                    <small class="opacity-75">United States</small>
+                </div>
+                <div class="map-marker">
+                    <div class="marker-dot"></div>
+                    <div class="fw-bold">EPO</div>
+                    <small class="opacity-75">Europe</small>
+                </div>
+                <div class="map-marker">
+                    <div class="marker-dot"></div>
+                    <div class="fw-bold">JPO</div>
+                    <small class="opacity-75">Japan</small>
+                </div>
+                <div class="map-marker">
+                    <div class="marker-dot"></div>
+                    <div class="fw-bold">CNIPA</div>
+                    <small class="opacity-75">China</small>
+                </div>
+                <div class="map-marker">
+                    <div class="marker-dot"></div>
+                    <div class="fw-bold">WIPO</div>
+                    <small class="opacity-75">International</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Industry Expertise -->
+    <section class="expertise-section">
+        <div class="container">
+            <div class="row align-items-end mb-5">
+                <div class="col-md-8" data-aos="fade-right">
+                    <h2>Technical Proficiency</h2>
+                    <p class="text-secondary mb-0">Our patent attorneys hold advanced degrees in specialized technical
+                        fields, ensuring precise claim construction.</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="expertise-item">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80"
+                            alt="Semiconductors" class="img-fluid rounded-3 mb-4"
+                            style="height: 200px; width: 100%; object-fit: cover;">
+                        <h3>Semiconductors</h3>
+                        <p class="text-secondary">Microelectronics, fabrication processes, and integrated circuit
+                            layouts.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="expertise-item">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=400&q=80"
+                            alt="Biotechnology" class="img-fluid rounded-3 mb-4"
+                            style="height: 200px; width: 100%; object-fit: cover;">
+                        <h3>Biotechnology</h3>
+                        <p class="text-secondary">Genomics, medical devices, pharmaceuticals, and bioinformatics.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="expertise-item">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=400&q=80"
+                            alt="Artificial Intelligence" class="img-fluid rounded-3 mb-4"
+                            style="height: 200px; width: 100%; object-fit: cover;">
+                        <h3>Artificial Intelligence</h3>
+                        <p class="text-secondary">Machine learning models, neural networks, and algorithmic processes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Case Studies -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2>Landmark IP Litigations</h2>
+                <p class="mx-auto" style="max-width: 600px;">Explore how we defended critical patents against major
+                    infringement challenges.</p>
+            </div>
+
+            <div class="row g-4 perspective-1000">
+                <div class="col-md-6" data-aos="flip-left">
+                    <div class="case-study-card">
+                        <img src="https://images.pexels.com/photos/8296972/pexels-photo-8296972.jpeg"
+                            alt="Gavel and Books" class="case-img">
+                        <div class="case-content">
+                            <span class="badge bg-indigo mb-2">Defense</span>
+                            <h3 class="text-white">TechCorp v. Innovate Ltd</h3>
+                            <p class="mb-0 text-light opacity-75">Successfully defended a foundational
+                                telecommunications patent securing $50M in licensing revenue.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="flip-right">
+                    <div class="case-study-card">
+                        <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=800&q=80"
+                            alt="Legal Documents" class="case-img">
+                        <div class="case-content">
+                            <span class="badge bg-indigo mb-2">Enforcement</span>
+                            <h3 class="text-white">BioGen vs. Competitor</h3>
+                            <p class="mb-0 text-light opacity-75">Enforced method claims across 12 EU jurisdictions via
+                                the Unified Patent Court (UPC).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. IP Portfolio Showcase (Horizontal Scroll) -->
+    <section class="portfolio-section">
+        <div class="container mb-4">
+            <h2 data-aos="fade-right">Recently Granted Patents</h2>
+        </div>
+        <div class="scrolling-wrapper">
+            <!-- Items duplicated for continuous scroll effect -->
+            <div class="portfolio-item border border-gold">
+                <div class="d-flex justify-content-between mb-3">
+                    <h5 class="mb-0">US-11456789-B2</h5>
+                    <i class="bi bi-patch-check-fill text-indigo fs-4"></i>
+                </div>
+                <p class="small text-secondary">Method for Quantum Error Correction</p>
+                <div class="text-indigo fw-bold text-end mt-3">View Details &rarr;</div>
+            </div>
+            <div class="portfolio-item border border-gold">
+                <div class="d-flex justify-content-between mb-3">
+                    <h5 class="mb-0">EP-3456789-B1</h5>
+                    <i class="bi bi-patch-check-fill text-indigo fs-4"></i>
+                </div>
+                <p class="small text-secondary">Synthetic Polymer Composition</p>
+                <div class="text-indigo fw-bold text-end mt-3">View Details &rarr;</div>
+            </div>
+            <div class="portfolio-item border border-gold">
+                <div class="d-flex justify-content-between mb-3">
+                    <h5 class="mb-0">JP-7654321-B2</h5>
+                    <i class="bi bi-patch-check-fill text-indigo fs-4"></i>
+                </div>
+                <p class="small text-secondary">Autonomous Navigation Heuristics</p>
+                <div class="text-indigo fw-bold text-end mt-3">View Details &rarr;</div>
+            </div>
+            <div class="portfolio-item border border-gold">
+                <div class="d-flex justify-content-between mb-3">
+                    <h5 class="mb-0">US-11987654-B2</h5>
+                    <i class="bi bi-patch-check-fill text-indigo fs-4"></i>
+                </div>
+                <p class="small text-secondary">Targeted Drug Delivery Mechanism</p>
+                <div class="text-indigo fw-bold text-end mt-3">View Details &rarr;</div>
+            </div>
+            <!-- Duplicates -->
+            <div class="portfolio-item border border-gold">
+                <div class="d-flex justify-content-between mb-3">
+                    <h5 class="mb-0">US-11456789-B2</h5>
+                    <i class="bi bi-patch-check-fill text-indigo fs-4"></i>
+                </div>
+                <p class="small text-secondary">Method for Quantum Error Correction</p>
+                <div class="text-indigo fw-bold text-end mt-3">View Details &rarr;</div>
+            </div>
+            <div class="portfolio-item border border-gold">
+                <div class="d-flex justify-content-between mb-3">
+                    <h5 class="mb-0">EP-3456789-B1</h5>
+                    <i class="bi bi-patch-check-fill text-indigo fs-4"></i>
+                </div>
+                <p class="small text-secondary">Synthetic Polymer Composition</p>
+                <div class="text-indigo fw-bold text-end mt-3">View Details &rarr;</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Section: Modern Image Layout -->
+    <section class="section-padding" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2>Our Global Network</h2>
+                <p class="text-secondary mx-auto" style="max-width: 600px;">Experience our state-of-the-art facilities
+                    across the globe, dedicated to advancing intellectual property.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+                        alt="Corporate Office" class="img-fluid rounded-4 h-100"
+                        style="object-fit: cover; min-height: 400px; box-shadow: var(--shadow-md);">
+                </div>
+                <div class="col-md-6">
+                    <div class="row g-4 h-100">
+                        <div class="col-12" data-aos="fade-down">
+                            <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80"
+                                alt="Meeting Room" class="img-fluid rounded-4 w-100"
+                                style="height: 190px; object-fit: cover; box-shadow: var(--shadow-sm);">
+                        </div>
+                        <div class="col-6" data-aos="fade-up" data-aos-delay="100">
+                            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80"
+                                alt="Technology" class="img-fluid rounded-4 w-100"
+                                style="height: 190px; object-fit: cover; box-shadow: var(--shadow-sm);">
+                        </div>
+                        <div class="col-6" data-aos="fade-up" data-aos-delay="200">
+                            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=400&q=80"
+                                alt="Tech Hub" class="img-fluid rounded-4 w-100"
+                                style="height: 190px; object-fit: cover; box-shadow: var(--shadow-sm);">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Spotlight CTA -->
+    <section class="spotlight-cta">
+        <div class="spotlight"></div>
+        <div class="container position-relative z-2" data-aos="zoom-in-up">
+            <h2 class="display-5 fw-bold mb-4 text-white">Empower Your R&D</h2>
+            <p class="lead mb-5 mx-auto" style="max-width: 700px; color: #a1a1aa;">Leverage our firm's deep technical
+                insight and SaaS dashboard to map out an aggressive IP filing strategy.</p>
+            <a href="signup.html" class="btn-premium primary btn-lg">Create Client Account</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 footer-widget">
+                    <a href="index.html" class="logo mb-4 d-inline-block">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo"
+                            style="margin-right:8px">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="M12 8v4"></path>
+                            <path d="M12 16h.01"></path>
+                        </svg>
+                        Novus<span>IP</span>
+                    </a>
+                    <p class="mb-4">Premium intellectual property management combining top-tier legal expertise with a
+                        modern SaaS dashboard.</p>
+                    <div class="d-flex gap-3 footer-social">
+                        <a href="#" class="fs-5"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="fs-5"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="fs-5"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 footer-widget">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Firm</a></li>
+                        <li><a href="services.html">Practice Areas</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                        <li><a href="gallery.html">Case Studies</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 footer-widget">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="login.html">Client Portal</a></li>
+                        <li><a href="blog.html">IP Insights</a></li>
+                        <li><a href="#">Filing Guides</a></li>
+                        <li><a href="#">Patent Search</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 footer-widget">
+                    <h4>Newsletter</h4>
+                    <p class="mb-3">Subscribe for the latest updates in patent law and IP strategy.</p>
+                    <form class="d-flex position-relative footer-form">
+                        <input type="email" class="form-control rounded-pill py-3 px-4 w-100 border-color shadow-none"
+                            placeholder="Email address" required style="background: rgba(128,128,128,0.05);">
+                        <button type="submit"
+                            class="btn-premium primary rounded-pill position-absolute end-0 top-0 bottom-0 m-1 px-4 border-0">Subscribe</button>
+                    </form>
+                    <div class="mt-4 d-flex gap-2 flex-wrap">
+                        <span class="badge text-secondary border border-color fw-normal px-3 py-2 rounded-pill"><i
+                                class="bi bi-shield-lock-fill text-indigo me-1"></i> SOC2 Type II Certified</span>
+                        <span class="badge text-secondary border border-color fw-normal px-3 py-2 rounded-pill"><i
+                                class="bi bi-lock-fill text-indigo me-1"></i> 256-bit Encryption</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Novus IP Management Firm. All rights reserved.</div>
+                <div class="d-flex gap-4">
+                    <a href="#" class="text-decoration-none hover-white">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none hover-white">Terms of Service</a>
+                    <a href="#" class="text-decoration-none hover-white"
+                        onclick="window.scrollTo(0,0); return false;">Back to Top <i class="bi bi-arrow-up"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novus IP | Our Services</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        .service-hero {
+            padding: 180px 0 100px;
+            background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80') center/cover;
+            position: relative;
+        }
+
+        .service-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 6, 23, 0.85);
+        }
+
+        .service-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .svc-block {
+            padding: 100px 0;
+        }
+
+
+        .svc-img {
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.5s;
+        }
+
+        .svc-img:hover {
+            transform: scale(1.02);
+        }
+
+        .svc-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 16px;
+            transition: all var(--transition-normal);
+        }
+
+        .svc-card:hover {
+            box-shadow: var(--shadow-premium);
+            border-color: var(--brand-indigo);
+        }
+
+        .check-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .check-list i {
+            color: var(--brand-indigo);
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="text-indigo" style="margin-right:8px">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="M12 8v4"></path>
+                    <path d="M12 16h.01"></path>
+                </svg>
+                Novus<span>IP</span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Home 1</a>
+                <a href="index-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            
+                <div class="mobile-only-actions d-xl-none d-flex gap-3 align-items-center mt-3 pt-3 border-top border-secondary">
+                    <button class="icon-btn theme-toggle-btn" title="Toggle Theme">
+                        <i class="bi bi-moon"></i>
+                    </button>
+                    <button class="icon-btn rtl-toggle-btn" title="Toggle RTL">
+                        <i class="bi bi-text-right"></i>
+                    </button>
+                    <a href="signup.html" class="btn-premium primary w-100 text-center">Sign Up</a>
+                </div>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn theme-toggle-btn d-none d-xl-flex" title="Toggle Theme">
+                    <i class="bi bi-moon"></i>
+                </button>
+                <button class="icon-btn rtl-toggle-btn d-none d-xl-flex" title="Toggle RTL">
+                    <i class="bi bi-text-right"></i>
+                </button>
+                <a href="signup.html" class="btn-premium primary d-none d-xl-flex">Sign Up</a>
+                <button class="icon-btn mobile-toggle">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero -->
+    <section class="service-hero text-center text-white">
+        <div class="container" data-aos="zoom-in">
+            <h1 class="display-3 fw-bold mb-4 text-white">Practice Areas</h1>
+            <p class="lead mx-auto text-light opacity-75" style="max-width: 700px;">Comprehensive legal frameworks to
+                shield your innovations, brands, and creative assets.</p>
+        </div>
+    </section>
+
+    <!-- 2. Patent Filing -->
+    <section class="svc-block">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                    <img src="https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg" alt="Patent Filing"
+                        class="img-fluid svc-img">
+                </div>
+                <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
+                    <div class="text-indigo mb-3"><i class="bi bi-lightbulb fs-2"></i></div>
+                    <h2 class="mb-4">Patent Prosecution</h2>
+                    <p class="text-secondary mb-4">Our core competency. We translate complex engineering concepts into
+                        robust patent claims that withstand inter partes reviews and litigation.</p>
+                    <ul class="list-unstyled check-list mb-5">
+                        <li><i class="bi bi-check-circle-fill"></i> Utility and Design Patents</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Provisional Applications</li>
+                        <li><i class="bi bi-check-circle-fill"></i> PCT International Filings</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Office Action Responses</li>
+                    </ul>
+                    <a href="service-details.html" class="btn-premium outline">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Trademark -->
+    <section class="svc-block">
+        <div class="container">
+            <div class="row align-items-center flex-lg-row-reverse">
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-left">
+                    <img src="https://images.pexels.com/photos/7820383/pexels-photo-7820383.jpeg" alt="Trademark"
+                        class="img-fluid svc-img">
+                </div>
+                <div class="col-lg-6 pe-lg-5" data-aos="fade-right">
+                    <div class="text-indigo mb-3"><i class="bi bi-r-circle fs-2"></i></div>
+                    <h2 class="mb-4">Trademark Registration</h2>
+                    <p class="text-secondary mb-4">Protecting your brand identity is crucial in a crowded market. We
+                        conduct comprehensive clearance searches and manage global portfolios.</p>
+                    <ul class="list-unstyled check-list mb-5">
+                        <li><i class="bi bi-check-circle-fill"></i> Clearance Searches</li>
+                        <li><i class="bi bi-check-circle-fill"></i> USPTO Registration</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Madrid Protocol Filings</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Trademark Watch Services</li>
+                    </ul>
+                    <a href="service-details.html" class="btn-premium outline">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Copyright -->
+    <section class="svc-block">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="zoom-in">
+                    <div class="svc-card text-center">
+                        <i class="bi bi-c-circle display-1 text-indigo mb-4"></i>
+                        <h3>Copyright Protection</h3>
+                        <p class="text-secondary mt-3">Safeguard software codebases, architectural designs, and creative
+                            works. Statutory damages and attorneys' fees are only available for registered works.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5" data-aos="fade-up">
+                    <h2 class="mb-4">Creative Asset Defense</h2>
+                    <p class="text-secondary">We assist software companies and creators in registering their works,
+                        drafting licensing agreements, and enforcing rights against infringement.</p>
+                    <a href="service-details.html" class="text-indigo fw-bold mt-3 d-inline-block">Learn more about
+                        Copyrights &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4.1 Trade Secret Protection -->
+    <section class="svc-block">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                    <img src="https://images.pexels.com/photos/7841818/pexels-photo-7841818.jpeg" alt="Trade Secret"
+                        class="img-fluid svc-img rounded-4" style="object-fit: cover; height: 400px; width: 100%;">
+                </div>
+                <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
+                    <div class="text-indigo mb-3"><i class="bi bi-lock-fill fs-2"></i></div>
+                    <h2 class="mb-4">Trade Secret Protection</h2>
+                    <p class="text-secondary mb-4">Protect your most valuable confidential information, algorithms, and
+                        business methods. We help implement robust non-disclosure frameworks and security protocols.</p>
+                    <ul class="list-unstyled check-list mb-5">
+                        <li><i class="bi bi-check-circle-fill"></i> NDA Drafting & Review</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Employee Confidentiality Agreements</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Security Audit Protocols</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Trade Secret Enforcement</li>
+                    </ul>
+                    <a href="service-details.html" class="btn-premium outline">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4.2 IP Litigation -->
+    <section class="svc-block">
+        <div class="container">
+            <div class="row align-items-center flex-lg-row-reverse">
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80"
+                        alt="IP Litigation" class="img-fluid svc-img rounded-4"
+                        style="object-fit: cover; height: 400px; width: 100%;">
+                </div>
+                <div class="col-lg-6 pe-lg-5" data-aos="fade-right">
+                    <div class="text-indigo mb-3"><i class="bi bi-bank fs-2"></i></div>
+                    <h2 class="mb-4">IP Litigation Support</h2>
+                    <p class="text-secondary mb-4">Aggressive enforcement and defense of your intellectual property
+                        rights in federal courts and before the PTAB and ITC.</p>
+                    <ul class="list-unstyled check-list mb-5">
+                        <li><i class="bi bi-check-circle-fill"></i> Patent Infringement Defense</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Inter Partes Reviews (IPR)</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Trademark Disputes</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Appellate Advocacy</li>
+                    </ul>
+                    <a href="service-details.html" class="btn-premium outline">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. IP Portfolio Management -->
+    <section class="svc-block">
+        <div class="container text-center">
+            <div data-aos="fade-up">
+                <h2 class="mb-3">Strategic Portfolio Management</h2>
+                <p class="mx-auto text-secondary mb-5" style="max-width: 600px;">Leverage our proprietary Client
+                    Dashboard to track deadlines, pay annuities, and analyze your global IP footprint.</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="p-5 rounded-4 border border-gold" style="background: var(--bg-primary);">
+                        <i class="bi bi-laptop display-3 text-indigo mb-4"></i>
+                        <h4>The Novus Dashboard</h4>
+                        <p class="text-secondary mb-4">A single pane of glass for all your intellectual property assets.
+                            Built for enterprise transparency.</p>
+                        <a href="signup.html" class="btn-premium primary">Create Client Account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 footer-widget">
+                    <a href="index.html" class="logo mb-4 d-inline-block">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo"
+                            style="margin-right:8px">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="M12 8v4"></path>
+                            <path d="M12 16h.01"></path>
+                        </svg>
+                        Novus<span>IP</span>
+                    </a>
+                    <p class="mb-4">Premium intellectual property management combining top-tier legal expertise with a
+                        modern SaaS dashboard.</p>
+                    <div class="d-flex gap-3 footer-social">
+                        <a href="#" class="fs-5"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="fs-5"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="fs-5"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 footer-widget">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Firm</a></li>
+                        <li><a href="services.html">Practice Areas</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                        <li><a href="gallery.html">Case Studies</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 footer-widget">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="login.html">Client Portal</a></li>
+                        <li><a href="blog.html">IP Insights</a></li>
+                        <li><a href="#">Filing Guides</a></li>
+                        <li><a href="#">Patent Search</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 footer-widget">
+                    <h4>Newsletter</h4>
+                    <p class="mb-3">Subscribe for the latest updates in patent law and IP strategy.</p>
+                    <form class="d-flex position-relative footer-form">
+                        <input type="email" class="form-control rounded-pill py-3 px-4 w-100 border-color shadow-none"
+                            placeholder="Email address" required style="background: rgba(128,128,128,0.05);">
+                        <button type="submit"
+                            class="btn-premium primary rounded-pill position-absolute end-0 top-0 bottom-0 m-1 px-4 border-0">Subscribe</button>
+                    </form>
+                    <div class="mt-4 d-flex gap-2 flex-wrap">
+                        <span class="badge text-secondary border border-color fw-normal px-3 py-2 rounded-pill"><i
+                                class="bi bi-shield-lock-fill text-indigo me-1"></i> SOC2 Type II Certified</span>
+                        <span class="badge text-secondary border border-color fw-normal px-3 py-2 rounded-pill"><i
+                                class="bi bi-lock-fill text-indigo me-1"></i> 256-bit Encryption</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Novus IP Management Firm. All rights reserved.</div>
+                <div class="d-flex gap-4">
+                    <a href="#" class="text-decoration-none hover-white">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none hover-white">Terms of Service</a>
+                    <a href="#" class="text-decoration-none hover-white"
+                        onclick="window.scrollTo(0,0); return false;">Back to Top <i class="bi bi-arrow-up"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

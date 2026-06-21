@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novus IP | Blog & Insights</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        .blog-hero {
+            padding: 100px 0 100px;
+            background: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.85)), url('https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg') center/cover no-repeat;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        /* Featured Article */
+        .featured-post {
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-normal);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .featured-post:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .featured-img-wrap {
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .featured-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .featured-post:hover .featured-img {
+            transform: scale(1.05);
+        }
+
+        .featured-content {
+            padding: 40px;
+        }
+
+        /* Masonry Grid (Approximated with Flex/Grid for standard support) */
+        .grid-post {
+            background: var(--bg-primary);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grid-post:hover {
+            transform: translateY(-10px);
+            /* Hover lift */
+            box-shadow: var(--shadow-md);
+            border-color: var(--brand-cyan-muted);
+        }
+
+        .grid-img {
+            height: 220px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .grid-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-meta {
+            font-size: 0.85rem;
+            color: var(--brand-indigo);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Newsletter */
+        .newsletter-box {
+            background: linear-gradient(135deg, var(--brand-indigo) 0%, #1e293b 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            color: white;
+            text-align: center;
+            box-shadow: var(--shadow-premium);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="text-indigo" style="margin-right:8px">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="M12 8v4"></path>
+                    <path d="M12 16h.01"></path>
+                </svg>
+                Novus<span>IP</span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Home 1</a>
+                <a href="index-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            
+                <div class="mobile-only-actions d-xl-none d-flex gap-3 align-items-center mt-3 pt-3 border-top border-secondary">
+                    <button class="icon-btn theme-toggle-btn" title="Toggle Theme">
+                        <i class="bi bi-moon"></i>
+                    </button>
+                    <button class="icon-btn rtl-toggle-btn" title="Toggle RTL">
+                        <i class="bi bi-text-right"></i>
+                    </button>
+                    <a href="signup.html" class="btn-premium primary w-100 text-center">Sign Up</a>
+                </div>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn theme-toggle-btn d-none d-xl-flex" title="Toggle Theme">
+                    <i class="bi bi-moon"></i>
+                </button>
+                <button class="icon-btn rtl-toggle-btn d-none d-xl-flex" title="Toggle RTL">
+                    <i class="bi bi-text-right"></i>
+                </button>
+                <a href="signup.html" class="btn-premium primary d-none d-xl-flex">Sign Up</a>
+                <button class="icon-btn mobile-toggle">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero -->
+    <section class="blog-hero text-center text-white">
+        <div class="container" data-aos="fade-up">
+            <h1 class="display-4 fw-bold mb-4 text-white">Insights & Updates</h1>
+            <p class="lead text-light opacity-75 mx-auto" style="max-width: 600px;">Analysis on recent Supreme Court rulings,
+                USPTO guidelines, and global intellectual property strategy.</p>
+        </div>
+    </section>
+
+    <!-- 2. Featured Articles -->
+    <section class="section-padding">
+        <div class="container">
+            <h3 class="mb-4 text-indigo">Featured Reading</h3>
+            <div class="row" data-aos="fade-up">
+                <div class="col-12">
+                    <div class="featured-post d-lg-flex">
+                        <div class="featured-img-wrap w-lg-50">
+                            <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1000&q=80"
+                                alt="Supreme Court" class="featured-img">
+                        </div>
+                        <div class="featured-content w-lg-50 d-flex flex-column justify-content-center">
+                            <span class="post-meta">Supreme Court Analysis • Oct 12, 2026</span>
+                            <h2 class="mb-3">The Impact of Amgen v. Sanofi on Enablement Requirements</h2>
+                            <p class="text-secondary mb-4">A deep dive into how the recent SCOTUS decision affects broad
+                                genus claims in biotechnology and pharmaceutical patents. Are functional claims
+                                officially dead?</p>
+                            <div>
+                                <a href="blog-details.html" class="btn-premium primary">Read Full Article</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Patent News (Masonry/Grid) -->
+    <section class="section-padding bg-secondary">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end mb-5" data-aos="fade-up">
+                <h2 class="mb-0">Latest Patent News</h2>
+                <a href="#" class="text-indigo fw-bold">View All News &rarr;</a>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="grid-post">
+                        <img src="https://images.pexels.com/photos/31466355/pexels-photo-31466355.jpeg" alt="Software"
+                            class="grid-img">
+                        <div class="grid-content">
+                            <span class="post-meta">USPTO Updates</span>
+                            <h4 class="mb-3">New Guidelines for AI-Assisted Inventions</h4>
+                            <p class="text-secondary mb-4">The USPTO has issued new guidance clarifying the inventorship
+                                requirements when Artificial Intelligence is used to generate claimable subject matter.
+                            </p>
+                            <a href="blog-details.html" class="text-indigo mt-auto fw-bold">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="grid-post">
+                        <img src="https://images.pexels.com/photos/6949418/pexels-photo-6949418.jpeg" alt="Global"
+                            class="grid-img">
+                        <div class="grid-content">
+                            <span class="post-meta">International Law</span>
+                            <h4 class="mb-3">Navigating the Unified Patent Court (UPC)</h4>
+                            <p class="text-secondary mb-4">Strategies for opting out vs. embracing the UPC jurisdiction
+                                for European patent enforcement in 2026.</p>
+                            <a href="blog-details.html" class="text-indigo mt-auto fw-bold">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="grid-post">
+                        <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=600&q=80"
+                            alt="Analytics" class="grid-img">
+                        <div class="grid-content">
+                            <span class="post-meta">Firm Updates</span>
+                            <h4 class="mb-3">Novus IP Dashboard 2.0 Released</h4>
+                            <p class="text-secondary mb-4">We've updated our client portal to include predictive cost
+                                analytics and automated prior art tracking via machine learning.</p>
+                            <a href="blog-details.html" class="text-indigo mt-auto fw-bold">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Industry Insights -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="mb-5" data-aos="fade-right">Industry Specific Insights</h2>
+
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="d-flex gap-4 p-4 border border-color rounded-4 align-items-center hover-lift"
+                        style="transition: transform 0.3s; cursor:pointer;"
+                        onmouseover="this.style.transform='translateY(-5px)'"
+                        onmouseout="this.style.transform='translateY(0)'">
+                        <i class="bi bi-hospital display-4 text-indigo"></i>
+                        <div>
+                            <h5>Medical Devices & Biotech</h5>
+                            <p class="text-secondary mb-0">Navigating FDA approval overlaps with patent term extensions
+                                (PTE).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="d-flex gap-4 p-4 border border-color rounded-4 align-items-center hover-lift"
+                        style="transition: transform 0.3s; cursor:pointer;"
+                        onmouseover="this.style.transform='translateY(-5px)'"
+                        onmouseout="this.style.transform='translateY(0)'">
+                        <i class="bi bi-cpu display-4 text-indigo"></i>
+                        <div>
+                            <h5>Semiconductors & Hardware</h5>
+                            <p class="text-secondary mb-0">Protecting layout designs and navigating complex
+                                cross-licensing deals.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Newsletter CTA -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="newsletter-box" data-aos="zoom-in">
+                <i class="bi bi-envelope-paper display-4 text-indigo mb-3"></i>
+                <h2 class="text-white mb-3">Stay Ahead of the Curve</h2>
+                <p class="lead opacity-75 mx-auto mb-5" style="max-width: 500px;">Get monthly updates on critical IP
+                    case law and filing strategies delivered directly to your inbox.</p>
+
+                <form class="mx-auto" style="max-width: 500px;">
+                    <div class="input-group input-group-lg">
+                        <input type="email" class="form-control border-0" placeholder="Your Email Address" required>
+                        <button class="btn btn-primary" type="submit"
+                            style="background:var(--brand-indigo); color:var(--brand-indigo); border:none; font-weight:600;">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 footer-widget">
+                    <a href="index.html" class="logo mb-4 d-inline-block">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo"
+                            style="margin-right:8px">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="M12 8v4"></path>
+                            <path d="M12 16h.01"></path>
+                        </svg>
+                        Novus<span>IP</span>
+                    </a>
+                    <p class="mb-4">Premium intellectual property management combining top-tier legal expertise with a
+                        modern SaaS dashboard.</p>
+                    <div class="d-flex gap-3 footer-social">
+                        <a href="#" class="fs-5"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="fs-5"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="fs-5"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 footer-widget">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Firm</a></li>
+                        <li><a href="services.html">Practice Areas</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                        <li><a href="gallery.html">Case Studies</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 footer-widget">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="login.html">Client Portal</a></li>
+                        <li><a href="blog.html">IP Insights</a></li>
+                        <li><a href="#">Filing Guides</a></li>
+                        <li><a href="#">Patent Search</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 footer-widget">
+                    <h4>Newsletter</h4>
+                    <p class="mb-3">Subscribe for the latest updates in patent law and IP strategy.</p>
+                    <form class="d-flex position-relative footer-form">
+                        <input type="email" class="form-control rounded-pill py-3 px-4 w-100 border-color shadow-none"
+                            placeholder="Email address" required style="background: rgba(128,128,128,0.05);">
+                        <button type="submit"
+                            class="btn-premium primary rounded-pill position-absolute end-0 top-0 bottom-0 m-1 px-4 border-0">Subscribe</button>
+                    </form>
+                    <div class="mt-4 d-flex gap-2 flex-wrap">
+                        <span class="badge text-secondary border border-color fw-normal px-3 py-2 rounded-pill"><i
+                                class="bi bi-shield-lock-fill text-indigo me-1"></i> SOC2 Type II Certified</span>
+                        <span class="badge text-secondary border border-color fw-normal px-3 py-2 rounded-pill"><i
+                                class="bi bi-lock-fill text-indigo me-1"></i> 256-bit Encryption</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Novus IP Management Firm. All rights reserved.</div>
+                <div class="d-flex gap-4">
+                    <a href="#" class="text-decoration-none hover-white">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none hover-white">Terms of Service</a>
+                    <a href="#" class="text-decoration-none hover-white"
+                        onclick="window.scrollTo(0,0); return false;">Back to Top <i class="bi bi-arrow-up"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

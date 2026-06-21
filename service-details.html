@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novus IP | Service Details</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        .details-hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            position: relative;
+        }
+        
+        .overview-img {
+            border-radius: 20px;
+            box-shadow: var(--shadow-premium);
+        }
+        
+        /* Vertical Workflow */
+        .workflow-line {
+            position: relative;
+            padding-left: 50px;
+        }
+        .workflow-line::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+        .workflow-step {
+            position: relative;
+            margin-bottom: 40px;
+            background: var(--bg-primary);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+        .workflow-step::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 30px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--brand-indigo);
+            box-shadow: 0 0 0 5px var(--bg-secondary);
+        }
+        
+        /* Benefits */
+        .benefit-card {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 30px;
+            height: 100%;
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-normal);
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--brand-indigo);
+        }
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--brand-indigo);
+            margin-bottom: 20px;
+        }
+        
+        /* Mini Stats */
+        .mini-stat {
+            background: var(--brand-indigo);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .mini-stat .num {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--brand-indigo);
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="text-indigo" style="margin-right:8px">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="M12 8v4"></path>
+                    <path d="M12 16h.01"></path>
+                </svg>
+                Novus<span>IP</span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Home 1</a>
+                <a href="index-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            
+                <div class="mobile-only-actions d-xl-none d-flex gap-3 align-items-center mt-3 pt-3 border-top border-secondary">
+                    <button class="icon-btn theme-toggle-btn" title="Toggle Theme">
+                        <i class="bi bi-moon"></i>
+                    </button>
+                    <button class="icon-btn rtl-toggle-btn" title="Toggle RTL">
+                        <i class="bi bi-text-right"></i>
+                    </button>
+                    <a href="signup.html" class="btn-premium primary w-100 text-center">Sign Up</a>
+                </div>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn theme-toggle-btn d-none d-xl-flex" title="Toggle Theme">
+                    <i class="bi bi-moon"></i>
+                </button>
+                <button class="icon-btn rtl-toggle-btn d-none d-xl-flex" title="Toggle RTL">
+                    <i class="bi bi-text-right"></i>
+                </button>
+                <a href="signup.html" class="btn-premium primary d-none d-xl-flex">Sign Up</a>
+                <button class="icon-btn mobile-toggle">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero -->
+    <section class="details-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <span class="badge bg-indigo text-navy mb-3 px-3 py-2">Service Details</span>
+                    <h1 class="display-4 fw-bold mb-4">Patent Prosecution & Strategy</h1>
+                    <p class="lead text-secondary">Securing robust patent portfolios that provide measurable business value and defensive strength against litigation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Overview -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80" alt="Legal Documents" class="img-fluid overview-img">
+                </div>
+                <div class="col-lg-6 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="mb-4">Comprehensive Patent Lifecycle Management</h2>
+                    <p class="text-secondary mb-4">From initial disclosure to post-grant proceedings, we handle the entire lifecycle of your patent applications. Our approach focuses on drafting broad, enforceable claims while avoiding unnecessary prosecution history estoppel.</p>
+                    
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="mini-stat">
+                                <div class="num counter" data-target="98">0</div>
+                                <div class="small mt-1 opacity-75">% Grant Rate</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mini-stat">
+                                <div class="num counter" data-target="150">0</div>
+                                <div class="small mt-1 opacity-75">+ Jurisdictions</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Filing Workflow -->
+    <section class="section-padding bg-secondary">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2>Our Execution Workflow</h2>
+                <p class="text-secondary mx-auto" style="max-width: 600px;">A standardized, highly efficient process integrated directly with our SaaS dashboard.</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8 workflow-line">
+                    
+                    <div class="workflow-step" data-aos="fade-up" data-aos-delay="100">
+                        <h4 class="text-indigo">Phase 1: Invention Disclosure</h4>
+                        <p class="text-secondary mb-0">Clients upload technical details to our secure portal. Our technical specialists review the disclosure to identify patentable subject matter and potential claim boundaries.</p>
+                    </div>
+                    
+                    <div class="workflow-step" data-aos="fade-up" data-aos-delay="200">
+                        <h4 class="text-indigo">Phase 2: Prior Art Search & Analysis</h4>
+                        <p class="text-secondary mb-0">We conduct a global search using advanced AI-driven databases to map the competitive landscape and avoid existing patents, ensuring a smooth path to allowance.</p>
+                    </div>
+                    
+                    <div class="workflow-step" data-aos="fade-up" data-aos-delay="300">
+                        <h4 class="text-indigo">Phase 3: Drafting & Electronic Filing</h4>
+                        <p class="text-secondary mb-0">Our attorneys draft the specification and claims. We handle all formalities, declarations, and assignments, filing electronically via EFS-Web/Patent Center.</p>
+                    </div>
+                    
+                    <div class="workflow-step" data-aos="fade-up" data-aos-delay="400">
+                        <h4 class="text-indigo">Phase 4: Examiner Interviews & Office Actions</h4>
+                        <p class="text-secondary mb-0">We proactively schedule examiner interviews to resolve issues quickly. All office actions and our responses are visible in real-time on your dashboard.</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Benefits -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2>Why Partner With Us?</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="benefit-card">
+                        <i class="bi bi-clock-history benefit-icon"></i>
+                        <h4>Accelerated Exam</h4>
+                        <p class="text-secondary mb-0">We regularly utilize Track One and Patent Prosecution Highway (PPH) to cut wait times from years to months.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="benefit-card">
+                        <i class="bi bi-diagram-3 benefit-icon"></i>
+                        <h4>Continuity Strategy</h4>
+                        <p class="text-secondary mb-0">We file strategic continuation applications to keep portfolios alive and adapt claims to competitors' evolving products.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="benefit-card">
+                        <i class="bi bi-cash-coin benefit-icon"></i>
+                        <h4>Predictable Billing</h4>
+                        <p class="text-secondary mb-0">Flat-fee structures for drafting and standard responses mean no surprise invoices. Track all costs in the billing tab.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. CTA -->
+    <section class="section-padding bg-dark text-white text-center">
+        <div class="container" data-aos="fade-up">
+            <h2 class="text-white mb-4">Start Your Filing Process Today</h2>
+            <p class="lead opacity-75 mb-5 mx-auto" style="max-width: 600px;">Log in to the dashboard to submit an invention disclosure, or schedule a call with an attorney.</p>
+            <div class="d-flex gap-3 justify-content-center">
+                <a href="booking.html" class="btn-premium primary">Book Consultation</a>
+                <a href="login.html" class="btn-premium outline" style="border-color: var(--brand-indigo); color: var(--brand-indigo);">Client Portal</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 footer-widget">
+                    <a href="index.html" class="logo mb-4 d-inline-block">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo"
+                            style="margin-right:8px">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="M12 8v4"></path>
+                            <path d="M12 16h.01"></path>
+                        </svg>
+                        Novus<span>IP</span>
+                    </a>
+                    <p class="mb-4">Premium intellectual property management combining top-tier legal expertise with a
+                        modern SaaS dashboard.</p>
+                    <div class="d-flex gap-3 footer-social">
+                        <a href="#" class="fs-5"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="fs-5"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="fs-5"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 footer-widget">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Firm</a></li>
+                        <li><a href="services.html">Practice Areas</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                        <li><a href="gallery.html">Case Studies</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 footer-widget">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="login.html">Client Portal</a></li>
+                        <li><a href="blog.html">IP Insights</a></li>
+                        <li><a href="#">Filing Guides</a></li>
+                        <li><a href="#">Patent Search</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 footer-widget">
+                    <h4>Newsletter</h4>
+                    <p class="mb-3">Subscribe for the latest updates in patent law and IP strategy.</p>
+                    <form class="d-flex position-relative footer-form">
+                        <input type="email" class="form-control rounded-pill py-3 px-4 w-100 border-color shadow-none"
+                            placeholder="Email address" required style="background: rgba(128,128,128,0.05);">
+                        <button type="submit"
+                            class="btn-premium primary rounded-pill position-absolute end-0 top-0 bottom-0 m-1 px-4 border-0">Subscribe</button>
+                    </form>
+                    <div class="mt-4 d-flex gap-2 flex-wrap">
+                        <span class="badge text-secondary border border-color fw-normal px-3 py-2 rounded-pill"><i
+                                class="bi bi-shield-lock-fill text-indigo me-1"></i> SOC2 Type II Certified</span>
+                        <span class="badge text-secondary border border-color fw-normal px-3 py-2 rounded-pill"><i
+                                class="bi bi-lock-fill text-indigo me-1"></i> 256-bit Encryption</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Novus IP Management Firm. All rights reserved.</div>
+                <div class="d-flex gap-4">
+                    <a href="#" class="text-decoration-none hover-white">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none hover-white">Terms of Service</a>
+                    <a href="#" class="text-decoration-none hover-white"
+                        onclick="window.scrollTo(0,0); return false;">Back to Top <i class="bi bi-arrow-up"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Counter Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                // Simple intersection observer to start animation when visible
+                const observer = new IntersectionObserver((entries) => {
+                    if(entries[0].isIntersecting) {
+                        updateCounter();
+                        observer.disconnect();
+                    }
+                });
+                observer.observe(counter);
+            });
+        });
+    </script>
+</body>
+</html>

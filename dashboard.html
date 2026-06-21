@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novus IP | Client Dashboard</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        /* Dashboard Layout */
+        body {
+            background-color: var(--bg-secondary);
+        }
+        
+        .dashboard-layout {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--bg-primary);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            transition: all var(--transition-normal);
+        }
+        
+        .sidebar-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .sidebar-menu {
+            padding: 20px 0;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            border-left: 3px solid transparent;
+        }
+        
+        .menu-item:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+        
+        .menu-item.active {
+            background: var(--brand-cyan-muted);
+            color: var(--brand-indigo);
+            border-left-color: var(--brand-indigo);
+            font-weight: 500;
+        }
+        
+        .menu-item i {
+            font-size: 1.2rem;
+        }
+        
+        .sidebar-footer {
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .topbar {
+            height: 70px;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+        
+        .content-area {
+            flex-grow: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        /* Dashboard Widgets */
+        .stat-card {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--brand-cyan-muted);
+            color: var(--brand-indigo);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        /* Charts */
+        .chart-container {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            margin-top: 24px;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -30px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--brand-indigo);
+            box-shadow: 0 0 0 4px var(--bg-primary);
+        }
+        
+        /* Drag & Drop Zone */
+        .drop-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            background: var(--bg-primary);
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+        
+        .drop-zone:hover, .drop-zone.dragover {
+            border-color: var(--brand-indigo);
+            background: var(--brand-cyan-muted);
+        }
+        
+        /* Sections Toggling */
+        .dashboard-section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .dashboard-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo text-decoration-none">
+                    <i class="bi bi-shield-check"></i> Novus<span>IP</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-menu">
+                <small class="text-secondary px-4 mb-2 d-block text-uppercase fw-bold" style="font-size: 0.75rem;">Menu</small>
+                <a href="#" class="menu-item active" data-target="overview">
+                    <i class="bi bi-grid-1x2"></i> Overview
+                </a>
+                <a href="#" class="menu-item" data-target="tracking">
+                    <i class="bi bi-diagram-3"></i> Patent Tracking
+                </a>
+                <a href="#" class="menu-item" data-target="renewals">
+                    <i class="bi bi-calendar-event"></i> Renewal Center
+                </a>
+                <a href="#" class="menu-item" data-target="documents">
+                    <i class="bi bi-folder2-open"></i> Documents
+                </a>
+                <a href="#" class="menu-item" data-target="analytics">
+                    <i class="bi bi-bar-chart"></i> Analytics
+                </a>
+                
+                <small class="text-secondary px-4 mt-4 mb-2 d-block text-uppercase fw-bold" style="font-size: 0.75rem;">Account</small>
+                <a href="#" class="menu-item">
+                    <i class="bi bi-person"></i> Profile
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="bi bi-gear"></i> Settings
+                </a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <a href="index.html" class="menu-item text-danger p-0">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-light d-lg-none"><i class="bi bi-list"></i></button>
+                    <h5 class="mb-0 fw-bold" id="page-title">Dashboard Overview</h5>
+                </div>
+                
+                <div class="d-flex align-items-center gap-3">
+                    <button class="icon-btn" id="theme-toggle"><i class="bi bi-moon"></i></button>
+                    <div class="position-relative">
+                        <button class="icon-btn"><i class="bi bi-bell"></i></button>
+                        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 ms-3 border-start ps-3 border-secondary">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="rounded-circle" width="40" height="40">
+                        <div class="d-none d-md-block">
+                            <h6 class="mb-0 fs-6">David Chen</h6>
+                            <small class="text-secondary" style="font-size: 0.8rem;">TechVision AI</small>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="content-area">
+                
+                <!-- 1. Overview Section -->
+                <div id="overview" class="dashboard-section active">
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-3">
+                            <div class="stat-card">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <p class="text-secondary mb-1">Active Applications</p>
+                                        <h3 class="fw-bold mb-0 counter" data-target="14">0</h3>
+                                    </div>
+                                    <div class="stat-icon"><i class="bi bi-file-earmark-text"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <p class="text-secondary mb-1">Granted Patents</p>
+                                        <h3 class="fw-bold mb-0 counter" data-target="8">0</h3>
+                                    </div>
+                                    <div class="stat-icon text-success bg-success bg-opacity-10"><i class="bi bi-patch-check"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <p class="text-secondary mb-1">Pending Actions</p>
+                                        <h3 class="fw-bold mb-0 text-danger counter" data-target="3">0</h3>
+                                    </div>
+                                    <div class="stat-icon text-danger bg-danger bg-opacity-10"><i class="bi bi-exclamation-triangle"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <p class="text-secondary mb-1">Upcoming Renewals</p>
+                                        <h3 class="fw-bold mb-0 text-warning counter" data-target="2">0</h3>
+                                    </div>
+                                    <div class="stat-icon text-warning bg-warning bg-opacity-10"><i class="bi bi-calendar-event"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row g-4">
+                        <div class="col-lg-8">
+                            <div class="chart-container h-100">
+                                <h5>Filing Activity (YTD)</h5>
+                                <div style="position: relative; height: 250px; width: 100%;">
+                                    <canvas id="activityChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="chart-container h-100">
+                                <h5>Recent Milestones</h5>
+                                <div class="timeline mt-4">
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot bg-success"></div>
+                                        <h6>Notice of Allowance</h6>
+                                        <p class="text-secondary small mb-0">US App. 16/234,567</p>
+                                        <small class="text-muted">Today, 10:30 AM</small>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <h6>Office Action Response Filed</h6>
+                                        <p class="text-secondary small mb-0">EP App. 18765432.1</p>
+                                        <small class="text-muted">Yesterday</small>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot bg-danger"></div>
+                                        <h6>Non-Final Rejection</h6>
+                                        <p class="text-secondary small mb-0">US App. 17/123,890</p>
+                                        <small class="text-muted">Oct 12, 2026</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2. Patent Tracking -->
+                <div id="tracking" class="dashboard-section">
+                    <div class="chart-container">
+                        <div class="d-flex justify-content-between mb-4">
+                            <h5>Active Portfolio</h5>
+                            <button class="btn btn-sm btn-primary" style="background:var(--brand-indigo); border:none; color:var(--brand-indigo);">+ New Filing Request</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle" style="color: var(--text-primary)">
+                                <thead>
+                                    <tr>
+                                        <th>Ref ID</th>
+                                        <th>Title</th>
+                                        <th>Jurisdiction</th>
+                                        <th>Status</th>
+                                        <th>Next Deadline</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-bold">TV-001</td>
+                                        <td>Neural Net Optimizer</td>
+                                        <td>US</td>
+                                        <td><span class="badge bg-success">Granted</span></td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">TV-002</td>
+                                        <td>Quantum Routing Algorithm</td>
+                                        <td>EP</td>
+                                        <td><span class="badge bg-warning text-dark">Under Exam</span></td>
+                                        <td class="text-danger fw-bold">Nov 15, 2026</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">TV-003</td>
+                                        <td>Encrypted Data Storage</td>
+                                        <td>PCT</td>
+                                        <td><span class="badge bg-info">Drafting</span></td>
+                                        <td>Dec 01, 2026</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 3. Renewal Center -->
+                <div id="renewals" class="dashboard-section">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="chart-container">
+                                <h5>Upcoming Annuity Payments</h5>
+                                <p class="text-secondary">Keep your patents alive by paying maintenance fees.</p>
+                                
+                                <div class="card bg-transparent border-warning mt-3">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-0 text-warning">US-10456789 (TV-001)</h6>
+                                                <small class="text-secondary">4th Year Maintenance Fee</small>
+                                            </div>
+                                            <h4 class="mb-0">$1,600</h4>
+                                        </div>
+                                        <hr class="border-secondary">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="text-danger fw-bold"><i class="bi bi-clock"></i> Due in 45 Days</span>
+                                            <button class="btn btn-sm btn-outline-warning">Pay Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 4. Documents -->
+                <div id="documents" class="dashboard-section">
+                    <div class="chart-container">
+                        <h5>Secure File Vault</h5>
+                        <p class="text-secondary mb-4">Upload invention disclosures, signed declarations, or prior art.</p>
+                        
+                        <div class="drop-zone mb-4" id="drop-zone">
+                            <i class="bi bi-cloud-arrow-up display-4 text-indigo mb-3 d-block"></i>
+                            <h5>Drag & Drop Files Here</h5>
+                            <p class="text-secondary">or click to browse from your computer</p>
+                            <input type="file" hidden id="file-input" multiple>
+                        </div>
+                        
+                        <h6 class="mb-3">Recent Files</h6>
+                        <ul class="list-group">
+                            <li class="list-group-item bg-transparent border-secondary text-primary d-flex justify-content-between align-items-center">
+                                <div><i class="bi bi-file-pdf text-danger me-2"></i> TV-002_Office_Action.pdf</div>
+                                <button class="btn btn-sm btn-light"><i class="bi bi-download"></i></button>
+                            </li>
+                            <li class="list-group-item bg-transparent border-secondary text-primary d-flex justify-content-between align-items-center">
+                                <div><i class="bi bi-file-word text-primary me-2"></i> TV-003_Draft_Spec_v2.docx</div>
+                                <button class="btn btn-sm btn-light"><i class="bi bi-download"></i></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 5. Analytics -->
+                <div id="analytics" class="dashboard-section">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="chart-container">
+                                <h5>Portfolio Distribution</h5>
+                                <div style="position: relative; height: 250px; width: 100%;">
+                                    <canvas id="pieChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="chart-container">
+                                <h5>Cost Projection (Next 12 Mo)</h5>
+                                <div style="position: relative; height: 250px; width: 100%;">
+                                    <canvas id="barChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/main.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Navigation Logic
+            const menuItems = document.querySelectorAll('.sidebar-menu .menu-item[data-target]');
+            const sections = document.querySelectorAll('.dashboard-section');
+            const pageTitle = document.getElementById('page-title');
+            
+            menuItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Remove active from all
+                    menuItems.forEach(m => m.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+                    
+                    // Add active to clicked
+                    item.classList.add('active');
+                    const targetId = item.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    // Update Title
+                    pageTitle.textContent = item.textContent.trim();
+                });
+            });
+            
+            // 2. Counters Animation
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 1500;
+                const increment = target / (duration / 16); // 60fps
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCounter();
+            });
+            
+            // 3. Drag and Drop
+            const dropZone = document.getElementById('drop-zone');
+            const fileInput = document.getElementById('file-input');
+            
+            dropZone.addEventListener('click', () => fileInput.click());
+            
+            dropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropZone.classList.add('dragover');
+            });
+            
+            dropZone.addEventListener('dragleave', () => {
+                dropZone.classList.remove('dragover');
+            });
+            
+            dropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if(files.length) {
+                    alert(`${files.length} file(s) uploaded successfully.`);
+                }
+            });
+            
+            // 4. Charts Logic
+            // Theme colors
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const textColor = isDark ? '#cbd5e1' : '#475569';
+            const gridColor = isDark ? '#334155' : '#e2e8f0';
+            
+            // Activity Line Chart
+            const ctxActivity = document.getElementById('activityChart');
+            if(ctxActivity) {
+                new Chart(ctxActivity, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Filings',
+                            data: [2, 1, 4, 3, 5, 2],
+                            borderColor: '#4F46E5',
+                            backgroundColor: 'rgba(79, 70, 229, 0.2)',
+                            tension: 0.4,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { grid: { color: gridColor }, ticks: { color: textColor } },
+                            x: { grid: { color: gridColor }, ticks: { color: textColor } }
+                        }
+                    }
+                });
+            }
+            
+            // Pie Chart
+            const ctxPie = document.getElementById('pieChart');
+            if(ctxPie) {
+                new Chart(ctxPie, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['US', 'EPO', 'PCT', 'Japan'],
+                        datasets: [{
+                            data: [45, 25, 20, 10],
+                            backgroundColor: ['#020617', '#4F46E5', '#1e293b', '#f5cf53'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false }
+                });
+            }
+            
+            // Bar Chart
+            const ctxBar = document.getElementById('barChart');
+            if(ctxBar) {
+                new Chart(ctxBar, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                        datasets: [{
+                            label: 'Estimated Costs ($)',
+                            data: [12000, 8500, 15000, 5000],
+                            backgroundColor: '#4F46E5'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: { grid: { color: gridColor }, ticks: { color: textColor } },
+                            x: { grid: { color: gridColor }, ticks: { color: textColor } }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
