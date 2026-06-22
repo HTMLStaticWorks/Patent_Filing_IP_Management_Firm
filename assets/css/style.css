@@ -90,6 +90,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
@@ -100,6 +102,7 @@ body {
   font-size: 1rem;
   transition: background-color var(--transition-normal), color var(--transition-normal);
   overflow-x: hidden;
+  max-width: 100vw;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -111,10 +114,16 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
-h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; }
-h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; }
-h3 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; }
+h1 { font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 800; }
+h2 { font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 700; }
+h3 { font-size: clamp(1.25rem, 3vw, 2rem); font-weight: 600; }
 p { font-size: clamp(1rem, 1.2vw, 1.125rem); color: var(--text-secondary); margin-bottom: 1.5rem; }
+
+/* Prevent long words from breaking layout */
+h1, h2, h3, h4, h5, h6 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
 
 a {
   color: var(--brand-accent);
@@ -133,9 +142,12 @@ a:hover {
 .bg-secondary { background-color: var(--bg-secondary) !important; }
 .text-secondary { color: var(--text-secondary) !important; }
 
-.section-padding { padding: 120px 0; }
-@media (max-width: 768px) {
-  .section-padding { padding: 80px 0; }
+.section-padding { padding: 90px 0; }
+@media (max-width: 991px) {
+  .section-padding { padding: 60px 0; }
+}
+@media (max-width: 767px) {
+  .section-padding { padding: 40px 0; }
 }
 
 /* Buttons */
@@ -192,6 +204,12 @@ a:hover {
   padding-right: 2rem;
   margin-left: auto;
   margin-right: auto;
+}
+@media (max-width: 767px) {
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
 }
 
 /* Header */
@@ -331,24 +349,54 @@ a:hover {
 
 @media (max-width: 1199px) {
   .main-nav {
-    display: none;
-    position: absolute;
-    top: calc(100% + 15px);
-    left: 0;
-    width: 100%;
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 25px;
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff;
+    padding: 100px 2rem 2rem;
+    border: none;
+    border-radius: 0;
     flex-direction: column;
-    gap: 20px;
-    box-shadow: var(--shadow-lg);
+    gap: 15px;
+    box-shadow: none;
+    z-index: 990;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    overflow-y: auto;
+  }
+  
+  [data-theme="dark"] .main-nav {
+    background: #050816;
   }
   
   .main-nav.show {
-    display: flex;
+    right: 0;
+  }
+  
+  .main-nav .nav-link {
+    font-size: 1.5rem;
+    padding: 10px 0;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .main-nav .nav-link::after {
+    display: none;
+  }
+  
+  .main-nav .nav-link.active {
+    color: var(--brand-accent);
+  }
+  
+  .main-nav .mobile-only-actions {
+    margin-top: auto;
+    width: 100%;
+    justify-content: center;
+    border-top: 1px solid var(--border-color) !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem;
   }
   
   .mobile-toggle {
@@ -370,6 +418,12 @@ a:hover {
   z-index: 1;
 }
 
+@media (max-width: 767px) {
+  .premium-card {
+    padding: 1.5rem;
+  }
+}
+
 .premium-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-premium);
@@ -388,9 +442,15 @@ a:hover {
 .site-footer {
   background-color: var(--footer-bg);
   color: var(--footer-text);
-  padding: 100px 0 40px;
+  padding: 80px 0 40px;
   border-top: 1px solid var(--footer-border);
   transition: all var(--transition-normal);
+}
+
+@media (max-width: 767px) {
+  .site-footer {
+    padding: 50px 0 30px;
+  }
 }
 
 .footer-widget h4 {
@@ -419,13 +479,15 @@ a:hover {
   transition: all var(--transition-fast);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  position: relative;
 }
 
 .footer-links a::before {
   content: '\F12F'; /* bootstrap icon arrow-right-short */
   font-family: 'bootstrap-icons';
   opacity: 0;
+  position: absolute;
+  left: -20px;
   transform: translateX(-10px);
   transition: all var(--transition-fast);
   color: var(--brand-accent);
@@ -433,6 +495,7 @@ a:hover {
 
 .footer-links a:hover {
   color: var(--brand-accent);
+  transform: translateX(20px);
 }
 
 .footer-links a:hover::before {
@@ -568,5 +631,157 @@ a:hover {
 }
 .back-to-top.active {
   opacity: 1;
-  visibility: visible;
+}
+
+/* Global Hero & Card Responsive Overrides */
+@media (max-width: 991px) {
+  .page-hero, .article-hero, .blog-hero, .booking-hero, .contact-hero, .pricing-hero, .service-hero, .services-hero, .gallery-hero, .error-hero {
+    padding: 120px 0 80px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-hero, .article-hero, .blog-hero, .booking-hero, .contact-hero, .pricing-hero, .service-hero, .services-hero, .gallery-hero, .error-hero {
+    padding: 100px 0 60px !important;
+  }
+  
+  .contact-form-box, .featured-content, .grid-content, .info-card, .timeline-card {
+    padding: 20px !important;
+  }
+  
+  /* Fix g-5 row gaps on mobile */
+  .row.g-5 {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 1.5rem;
+  }
+  
+  /* Stack CTA buttons on mobile */
+  .hero-section .d-flex.gap-3,
+  .hero-split .d-flex.gap-3,
+  .spotlight-cta .d-flex.gap-3 {
+    flex-direction: column;
+  }
+  
+  .hero-section .d-flex.gap-3 .btn-premium,
+  .hero-split .d-flex.gap-3 .btn-premium,
+  .spotlight-cta .d-flex.gap-3 .btn-premium {
+    width: 100%;
+  }
+}
+
+/* Force images to be responsive globally */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   Mobile & Tablet Typography Optimization
+   ========================================================================== */
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  h1, .h1, .display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+    font-size: clamp(2.5rem, 6vw, 3.25rem) !important;
+    line-height: 1.2 !important;
+  }
+  h2, .h2 {
+    font-size: clamp(2rem, 5vw, 2.5rem) !important;
+    line-height: 1.25 !important;
+  }
+  h3, .h3 {
+    font-size: clamp(1.6rem, 4vw, 1.8rem) !important;
+    line-height: 1.3 !important;
+  }
+  h4, h5, .lead {
+    font-size: 1.15rem !important;
+  }
+  p, body, .text-secondary {
+    font-size: 1.05rem !important;
+  }
+  small, .small {
+    font-size: 0.95rem !important;
+  }
+}
+
+/* Mobile (320px - 767px) */
+@media (max-width: 767px) {
+  /* H1: 2rem - 2.5rem (32px - 40px) */
+  h1, .h1, .display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+    font-size: clamp(2rem, 8vw, 2.5rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  /* H2: 1.75rem - 2rem (28px - 32px) */
+  h2, .h2 {
+    font-size: clamp(1.75rem, 7vw, 2rem) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  /* H3: 1.4rem - 1.6rem (22px - 26px) */
+  h3, .h3 {
+    font-size: clamp(1.4rem, 6vw, 1.6rem) !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  /* Subheading: 1rem - 1.1rem (16px - 18px) */
+  h4, h5, .lead {
+    font-size: clamp(1rem, 4.5vw, 1.1rem) !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  /* Body Text: 0.9rem - 1rem (14px - 16px) */
+  p, body, .text-secondary {
+    font-size: clamp(0.9rem, 4vw, 1rem) !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Small Text: 0.8rem - 0.9rem (13px - 14px) */
+  small, .small, .badge {
+    font-size: clamp(0.8rem, 3.5vw, 0.9rem) !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Spacing and Element scaling */
+  .btn-premium {
+    padding: 12px 24px !important;
+    font-size: 0.95rem !important;
+  }
+  
+  /* Better text alignment for hero sections on mobile */
+  .hero-content {
+    text-align: center;
+  }
+  .hero-content .d-flex {
+    justify-content: center;
+  }
+  .hero-content .hero-badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Global Mobile Typography Reduction */
+@media (max-width: 1024px) {
+  body, p, .lead { font-size: 0.95rem; }
+  .footer-widget h4, .footer-heading { font-size: 1.25rem; }
+  h5, .section-subheading, .subtitle { font-size: 1.15rem; }
+  h6, .card-title, .bento-item h3, .timeline-item h4, .premium-card h4, .metric-label { font-size: 1.2rem; }
+  .footer-links a, .footer-links li { font-size: 0.95rem; }
+  ul li, ol li { font-size: 0.95rem; }
+  small, .small, .text-sm, .text-secondary.small { font-size: 0.85rem; }
+}
+
+@media (max-width: 767px) {
+  body, p, .lead { font-size: 0.9rem; margin-bottom: 1rem; }
+  .footer-widget h4, .footer-heading { font-size: 1.15rem; }
+  h5, .section-subheading, .subtitle { font-size: 1.05rem; }
+  h6, .card-title, .bento-item h3, .timeline-item h4, .premium-card h4, .metric-label { font-size: 1.1rem; }
+  .footer-links a, .footer-links li { font-size: 0.9rem; }
+  ul li, ol li { font-size: 0.9rem; }
+  small, .small, .text-sm, .text-secondary.small { font-size: 0.8rem; }
 }

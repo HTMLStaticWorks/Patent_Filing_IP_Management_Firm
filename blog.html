@@ -55,6 +55,24 @@
             padding: 40px;
         }
 
+        @media (max-width: 767px) {
+            .featured-content {
+                padding: 20px;
+            }
+            .featured-content h2 {
+                font-size: 1.5rem !important;
+                line-height: 1.3;
+            }
+            .featured-content p {
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem !important;
+            }
+            .post-meta {
+                font-size: 0.75rem !important;
+                margin-bottom: 10px;
+            }
+        }
+
         /* Masonry Grid (Approximated with Flex/Grid for standard support) */
         .grid-post {
             background: var(--bg-primary);
@@ -374,10 +392,8 @@
             <div class="footer-bottom">
                 <div>&copy; 2026 Novus IP Management Firm. All rights reserved.</div>
                 <div class="d-flex gap-4">
-                    <a href="#" class="text-decoration-none hover-white">Privacy Policy</a>
-                    <a href="#" class="text-decoration-none hover-white">Terms of Service</a>
-                    <a href="#" class="text-decoration-none hover-white"
-                        onclick="window.scrollTo(0,0); return false;">Back to Top <i class="bi bi-arrow-up"></i></a>
+                    <a href="#" class="text-decoration-none hover-white fs-4" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"><i class="bi bi-arrow-up-circle-fill"></i></a>
+
                 </div>
             </div>
         </div>

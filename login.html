@@ -33,6 +33,17 @@
             right: 40px;
             display: flex;
             gap: 15px;
+            z-index: 100;
+        }
+        
+        @media (max-width: 991px) {
+            .auth-form-side {
+                padding-top: 80px;
+            }
+            .auth-toggles {
+                top: 20px;
+                right: 20px;
+            }
         }
         
         .glass-card {
@@ -120,12 +131,12 @@
                         </div>
                     </div>
                     
-                    <div class="mb-4 d-flex justify-content-between align-items-center">
-                        <div class="form-check mb-0">
+                    <div class="mb-4 d-flex justify-content-between align-items-center flex-nowrap gap-2">
+                        <div class="form-check mb-0 flex-shrink-0">
                             <input type="checkbox" class="form-check-input border-secondary" id="remember">
-                            <label class="form-check-label text-secondary small" for="remember">Remember me for 30 days</label>
+                            <label class="form-check-label text-secondary small text-nowrap" for="remember">Remember me</label>
                         </div>
-                        <a href="#" class="small text-indigo text-decoration-none">Forgot Password?</a>
+                        <a href="#" class="small text-indigo text-decoration-none text-nowrap flex-shrink-0">Forgot Password?</a>
                     </div>
                     
                     <button type="submit" class="btn-premium primary w-100 border-0 mb-4">Login to Dashboard</button>

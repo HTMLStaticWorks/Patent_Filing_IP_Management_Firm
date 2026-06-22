@@ -85,6 +85,8 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            min-width: 0;
+            width: 100%;
         }
         
         .topbar {
@@ -194,13 +196,44 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        
+        @media (max-width: 991px) {
+            .sidebar {
+                position: fixed;
+                left: -280px;
+                top: 0;
+                bottom: 0;
+                z-index: 1050;
+                box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            }
+            .sidebar.show {
+                left: 0;
+            }
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.5);
+                z-index: 1040;
+            }
+            .sidebar-overlay.show {
+                display: block;
+            }
+            .content-area {
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="dashboard-layout">
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <a href="index.html" class="logo text-decoration-none">
                     <i class="bi bi-shield-check"></i> Novus<span>IP</span>
@@ -243,20 +276,20 @@
         
         <!-- Main Content -->
         <main class="main-content">
-            <header class="topbar">
-                <div class="d-flex align-items-center gap-3">
-                    <button class="btn btn-light d-lg-none"><i class="bi bi-list"></i></button>
-                    <h5 class="mb-0 fw-bold" id="page-title">Dashboard Overview</h5>
+            <header class="topbar px-2 px-md-4">
+                <div class="d-flex align-items-center gap-2 gap-md-3 text-truncate">
+                    <button class="btn btn-light d-lg-none flex-shrink-0" id="mobile-sidebar-toggle"><i class="bi bi-list"></i></button>
+                    <h5 class="mb-0 fw-bold text-truncate" id="page-title">Overview</h5>
                 </div>
                 
-                <div class="d-flex align-items-center gap-3">
-                    <button class="icon-btn" id="theme-toggle"><i class="bi bi-moon"></i></button>
-                    <div class="position-relative">
+                <div class="d-flex align-items-center gap-2 gap-md-3 ms-auto ps-2">
+                    <button class="icon-btn flex-shrink-0" id="theme-toggle"><i class="bi bi-moon"></i></button>
+                    <div class="position-relative flex-shrink-0">
                         <button class="icon-btn"><i class="bi bi-bell"></i></button>
                         <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
                     </div>
-                    <div class="d-flex align-items-center gap-2 ms-3 border-start ps-3 border-secondary">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="rounded-circle" width="40" height="40">
+                    <div class="d-flex align-items-center gap-2 ms-1 ms-md-3 border-start ps-2 ps-md-3 border-secondary flex-shrink-0">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="rounded-circle" width="35" height="35">
                         <div class="d-none d-md-block">
                             <h6 class="mb-0 fs-6">David Chen</h6>
                             <small class="text-secondary" style="font-size: 0.8rem;">TechVision AI</small>
@@ -557,7 +590,31 @@
                 }
             });
             
-            // 4. Charts Logic
+            // 4. Mobile Sidebar Toggle
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('mobile-sidebar-toggle');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+            
+            if(sidebarToggle && sidebar && sidebarOverlay) {
+                const toggleSidebar = () => {
+                    sidebar.classList.toggle('show');
+                    sidebarOverlay.classList.toggle('show');
+                };
+                sidebarToggle.addEventListener('click', toggleSidebar);
+                sidebarOverlay.addEventListener('click', toggleSidebar);
+                
+                // Close sidebar when clicking a menu item on mobile
+                menuItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        if(window.innerWidth <= 991) {
+                            sidebar.classList.remove('show');
+                            sidebarOverlay.classList.remove('show');
+                        }
+                    });
+                });
+            }
+
+            // 5. Charts Logic
             // Theme colors
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             const textColor = isDark ? '#cbd5e1' : '#475569';

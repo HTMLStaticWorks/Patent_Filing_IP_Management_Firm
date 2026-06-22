@@ -80,6 +80,30 @@
             left: -20px;
         }
 
+        @media (max-width: 767px) {
+            .timeline-wrapper::before {
+                left: 20px;
+            }
+
+            .timeline-card {
+                width: calc(100% - 40px);
+                margin-left: 40px !important;
+                margin-right: 0 !important;
+                margin-bottom: 20px;
+            }
+
+            .timeline-card.right.mt-5,
+            .timeline-card.left.mt-5 {
+                margin-top: 20px !important;
+            }
+
+            .timeline-card::after {
+                width: 20px;
+                left: -20px !important;
+                right: auto !important;
+            }
+        }
+
         .why-icon {
             font-size: 2.5rem;
             color: var(--brand-indigo);
@@ -155,8 +179,9 @@
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
                 <a href="dashboard.html" class="nav-link">Dashboard</a>
-            
-                <div class="mobile-only-actions d-xl-none d-flex gap-3 align-items-center mt-3 pt-3 border-top border-secondary">
+
+                <div
+                    class="mobile-only-actions d-xl-none d-flex gap-3 align-items-center mt-3 pt-3 border-top border-secondary">
                     <button class="icon-btn theme-toggle-btn" title="Toggle Theme">
                         <i class="bi bi-moon"></i>
                     </button>
@@ -186,7 +211,8 @@
     <section class="page-hero text-center text-white">
         <div class="container" data-aos="fade-up">
             <h1 class="display-3 fw-bold mb-4 text-white">Our Legacy of Protection</h1>
-            <p class="lead opacity-75 mx-auto text-light" style="max-width: 700px;">Since our inception, we have been at the
+            <p class="lead opacity-75 mx-auto text-light" style="max-width: 700px;">Since our inception, we have been at
+                the
                 forefront of defending the world's most groundbreaking technologies.</p>
         </div>
     </section>
@@ -305,7 +331,7 @@
                                 alt="Partner" class="leader-img">
                         </div>
                         <div class="leader-info">
-                            <h5>Jonathan Reed, Esq.</h5>
+                            <h5>Jonathan Reed.</h5>
                             <p class="text-indigo mb-0">Managing Partner</p>
                         </div>
                     </div>
@@ -405,10 +431,10 @@
             <div class="footer-bottom">
                 <div>&copy; 2026 Novus IP Management Firm. All rights reserved.</div>
                 <div class="d-flex gap-4">
-                    <a href="#" class="text-decoration-none hover-white">Privacy Policy</a>
-                    <a href="#" class="text-decoration-none hover-white">Terms of Service</a>
-                    <a href="#" class="text-decoration-none hover-white"
-                        onclick="window.scrollTo(0,0); return false;">Back to Top <i class="bi bi-arrow-up"></i></a>
+                    <a href="#" class="text-decoration-none hover-white fs-4"
+                        onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"><i
+                            class="bi bi-arrow-up-circle-fill"></i></a>
+
                 </div>
             </div>
         </div>
