@@ -80,6 +80,11 @@
             color: var(--text-secondary);
         }
         
+        [dir="rtl"] .password-toggle {
+            right: auto;
+            left: 15px;
+        }
+        
         .social-btn {
             border: 1px solid var(--border-color);
             background: transparent;
@@ -105,14 +110,22 @@
         
         <div class="auth-form-side">
             <div class="auth-toggles">
-                <button class="icon-btn" id="theme-toggle"><i class="bi bi-moon"></i></button>
-                <button class="icon-btn" id="rtl-toggle"><i class="bi bi-text-right"></i></button>
+                <button class="icon-btn theme-toggle-btn" title="Toggle Theme"><i class="bi bi-moon"></i></button>
+                <button class="icon-btn rtl-toggle-btn" title="Toggle RTL"><i class="bi bi-globe"></i></button>
             </div>
             
             <div class="glass-card" data-aos="zoom-in" data-aos-duration="800">
-                <a href="index.html" class="logo mb-4 d-block text-center fs-2">
-                    <i class="bi bi-shield-check"></i> Novus<span>IP</span>
-                </a>
+                <div class="mb-4 d-flex justify-content-center">
+                    <a href="index.html" class="logo">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="text-indigo" style="margin-right:8px">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="M12 8v4"></path>
+                            <path d="M12 16h.01"></path>
+                        </svg>
+                        Novus <span>IP</span>
+                    </a>
+                </div>
                 
                 <h4 class="fw-bold mb-1 text-center">Welcome Back</h4>
                 <p class="text-secondary text-center mb-4">Sign in to your dashboard</p>

@@ -235,8 +235,14 @@
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <a href="index.html" class="logo text-decoration-none">
-                    <i class="bi bi-shield-check"></i> Novus<span>IP</span>
+                <a href="index.html" class="logo">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="text-indigo" style="margin-right:8px">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <path d="M12 8v4"></path>
+                        <path d="M12 16h.01"></path>
+                    </svg>
+                    Novus <span>IP</span>
                 </a>
             </div>
             
@@ -283,7 +289,8 @@
                 </div>
                 
                 <div class="d-flex align-items-center gap-2 gap-md-3 ms-auto ps-2">
-                    <button class="icon-btn flex-shrink-0" id="theme-toggle"><i class="bi bi-moon"></i></button>
+                    <button class="icon-btn flex-shrink-0 theme-toggle-btn" title="Toggle Theme"><i class="bi bi-moon"></i></button>
+                    <button class="icon-btn flex-shrink-0 rtl-toggle-btn" title="Toggle RTL"><i class="bi bi-globe"></i></button>
                     <div class="position-relative flex-shrink-0">
                         <button class="icon-btn"><i class="bi bi-bell"></i></button>
                         <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>

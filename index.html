@@ -11,7 +11,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +41,7 @@
                 padding: 100px 0 60px;
             }
         }
-        
+
         @media (max-width: 767px) {
             .hero-section {
                 padding: 80px 0 50px;
@@ -55,14 +57,17 @@
             pointer-events: none;
             z-index: 0;
         }
-        
+
         .hero-overlay {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: linear-gradient(180deg, rgba(15, 23, 42, 0.02) 0%, rgba(15, 23, 42, 0) 100%);
             z-index: 1;
         }
-        
+
         [data-theme="dark"] .hero-overlay {
             background: linear-gradient(180deg, rgba(2, 6, 23, 0.6) 0%, rgba(2, 6, 23, 0.2) 100%);
         }
@@ -111,7 +116,7 @@
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-sm);
         }
-        
+
         .hero-badge i {
             color: var(--brand-accent);
         }
@@ -170,19 +175,32 @@
         }
 
         @media (max-width: 991px) {
-            .fs-1 { left: -15px; }
-            .fs-2 { right: -15px; }
+            .fs-1 {
+                left: -15px;
+            }
+
+            .fs-2 {
+                right: -15px;
+            }
         }
 
         @media (max-width: 767px) {
-            .hero-img-wrapper { margin: 30px 15px; }
-            .hero-img-bg { right: -10px; top: 10px; }
+            .hero-img-wrapper {
+                margin: 30px 15px;
+            }
+
+            .hero-img-bg {
+                right: -10px;
+                top: 10px;
+            }
+
             .fs-1 {
                 top: -25px;
                 left: 10px;
                 right: 10px;
                 padding: 15px;
             }
+
             .fs-2 {
                 bottom: -25px;
                 left: 10px;
@@ -202,7 +220,7 @@
             justify-content: center;
             font-size: 1.5rem;
         }
-        
+
         [data-theme="dark"] .stat-icon {
             background: var(--brand-accent);
             color: #000;
@@ -233,27 +251,58 @@
             display: flex;
             flex-direction: column;
         }
-        
+
         .bento-item:hover {
             box-shadow: var(--shadow-md);
             transform: translateY(-5px);
             border-color: var(--brand-accent-muted);
         }
 
-        .bento-item-1 { grid-column: span 8; grid-row: span 2; }
-        .bento-item-2 { grid-column: span 4; grid-row: span 1; }
-        .bento-item-3 { grid-column: span 4; grid-row: span 1; }
-        
-        @media (max-width: 991px) {
-            .bento-item-1 { grid-column: span 12; }
-            .bento-item-2, .bento-item-3 { grid-column: span 6; }
-            .bento-item { padding: 30px; }
+        .bento-item-1 {
+            grid-column: span 8;
+            grid-row: span 2;
         }
-        
+
+        .bento-item-2 {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+
+        .bento-item-3 {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+
+        @media (max-width: 991px) {
+            .bento-item-1 {
+                grid-column: span 12;
+            }
+
+            .bento-item-2,
+            .bento-item-3 {
+                grid-column: span 6;
+            }
+
+            .bento-item {
+                padding: 30px;
+            }
+        }
+
         @media (max-width: 767px) {
-            .bento-item-1, .bento-item-2, .bento-item-3 { grid-column: span 12; }
-            .bento-grid { gap: 16px; }
-            .bento-item { padding: 24px; }
+
+            .bento-item-1,
+            .bento-item-2,
+            .bento-item-3 {
+                grid-column: span 12;
+            }
+
+            .bento-grid {
+                gap: 16px;
+            }
+
+            .bento-item {
+                padding: 24px;
+            }
         }
 
         .bento-icon {
@@ -315,7 +364,7 @@
             box-shadow: 0 0 0 10px var(--bg-primary);
             z-index: 2;
         }
-        
+
         [data-theme="dark"] .timeline-number {
             background: var(--brand-accent);
             color: #000;
@@ -326,9 +375,11 @@
                 padding-left: 60px;
                 margin-bottom: 40px;
             }
+
             .timeline::before {
                 left: 20px;
             }
+
             .timeline-number {
                 left: 0;
                 width: 40px;
@@ -351,7 +402,7 @@
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         [data-theme="dark"] .metrics-wrapper {
             background: var(--bg-tertiary);
         }
@@ -370,7 +421,7 @@
             margin-bottom: 10px;
             line-height: 1;
         }
-        
+
         .metric-label {
             color: rgba(255, 255, 255, 0.7);
             font-size: 1.1rem;
@@ -380,19 +431,39 @@
         }
 
         @media (max-width: 991px) {
-            .metric-number { font-size: 3rem; }
-            .metric-label { font-size: 1rem; }
+            .metric-number {
+                font-size: 3rem;
+            }
+
+            .metric-label {
+                font-size: 1rem;
+            }
         }
-        
+
         @media (max-width: 767px) {
-            .metric-number { font-size: 2.5rem; }
-            .metric-label { font-size: 0.85rem; letter-spacing: 1px; }
-            .metrics-wrapper { padding: 60px 20px; }
+            .metric-number {
+                font-size: 2.5rem;
+            }
+
+            .metric-label {
+                font-size: 0.85rem;
+                letter-spacing: 1px;
+            }
+
+            .metrics-wrapper {
+                padding: 60px 20px;
+            }
         }
-        
+
         @media (max-width: 480px) {
-            .metric-number { font-size: 2rem; }
-            .metric-label { font-size: 0.75rem; letter-spacing: 0px; }
+            .metric-number {
+                font-size: 2rem;
+            }
+
+            .metric-label {
+                font-size: 0.75rem;
+                letter-spacing: 0px;
+            }
         }
 
         /* Testimonials Masonry */
@@ -400,13 +471,17 @@
             column-count: 3;
             column-gap: 24px;
         }
-        
+
         @media (max-width: 991px) {
-            .testimonial-masonry { column-count: 2; }
+            .testimonial-masonry {
+                column-count: 2;
+            }
         }
-        
+
         @media (max-width: 767px) {
-            .testimonial-masonry { column-count: 1; }
+            .testimonial-masonry {
+                column-count: 1;
+            }
         }
 
         .testimonial-card {
@@ -435,6 +510,11 @@
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--brand-accent);
+            flex-shrink: 0;
+        }
+
+        .client-info>div {
+            text-align: left;
         }
 
         /* CTA Section */
@@ -443,7 +523,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .cta-box {
             background: var(--brand-primary);
             border-radius: 32px;
@@ -455,7 +535,7 @@
             margin: 0 auto;
             width: 100%;
         }
-        
+
         [data-theme="dark"] .cta-box {
             background: var(--bg-tertiary);
             border: 1px solid var(--border-color);
@@ -466,6 +546,7 @@
                 padding: 60px 20px;
                 border-radius: 24px;
             }
+
             .cta-box h2 {
                 font-size: clamp(1.1rem, 5vw, 1.5rem) !important;
                 white-space: nowrap;
@@ -486,7 +567,7 @@
                     <path d="M12 8v4"></path>
                     <path d="M12 16h.01"></path>
                 </svg>
-                Novus<span>IP</span>
+                Novus <span>IP</span>
             </a>
 
             <nav class="main-nav">
@@ -498,13 +579,14 @@
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
                 <a href="dashboard.html" class="nav-link">Dashboard</a>
-            
-                <div class="mobile-only-actions d-xl-none d-flex gap-3 align-items-center mt-3 pt-3 border-top border-secondary">
+
+                <div
+                    class="mobile-only-actions d-xl-none d-flex gap-3 align-items-center mt-3 pt-3 border-top border-secondary">
                     <button class="icon-btn theme-toggle-btn" title="Toggle Theme">
                         <i class="bi bi-moon"></i>
                     </button>
                     <button class="icon-btn rtl-toggle-btn" title="Toggle RTL">
-                        <i class="bi bi-text-right"></i>
+                        <i class="bi bi-globe"></i>
                     </button>
                     <a href="signup.html" class="btn-premium primary w-100 text-center">Sign Up</a>
                 </div>
@@ -515,7 +597,7 @@
                     <i class="bi bi-moon"></i>
                 </button>
                 <button class="icon-btn rtl-toggle-btn d-none d-xl-flex" title="Toggle RTL">
-                    <i class="bi bi-text-right"></i>
+                    <i class="bi bi-globe"></i>
                 </button>
                 <a href="signup.html" class="btn-premium primary d-none d-xl-flex">Sign Up</a>
                 <button class="icon-btn mobile-toggle">
@@ -546,22 +628,29 @@
                         <a href="contact.html" class="btn-premium primary">Schedule Review</a>
                         <a href="services.html" class="btn-premium outline">Explore Practice Areas</a>
                     </div>
-                    
+
                     <div class="d-flex align-items-center gap-4 mt-5 pt-4 border-top border-color">
                         <div class="d-flex -space-x-3">
-                            <img class="rounded-circle border border-2 border-white" width="40" height="40" src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
-                            <img class="rounded-circle border border-2 border-white" width="40" height="40" src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" style="margin-left: -15px;">
-                            <img class="rounded-circle border border-2 border-white" width="40" height="40" src="https://randomuser.me/api/portraits/men/85.jpg" alt="User" style="margin-left: -15px;">
+                            <img class="rounded-circle border border-2 border-white" width="40" height="40"
+                                src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                            <img class="rounded-circle border border-2 border-white" width="40" height="40"
+                                src="https://randomuser.me/api/portraits/women/44.jpg" alt="User"
+                                style="margin-left: -15px;">
+                            <img class="rounded-circle border border-2 border-white" width="40" height="40"
+                                src="https://randomuser.me/api/portraits/men/85.jpg" alt="User"
+                                style="margin-left: -15px;">
                         </div>
                         <div>
                             <div class="text-accent fs-6 mb-1">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
                             </div>
                             <span class="text-secondary small fw-medium">Trusted by 500+ Innovators</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
                     <div class="hero-img-wrapper">
                         <div class="hero-img-bg"></div>
@@ -594,30 +683,40 @@
         <div class="container">
             <div class="text-center mb-5 pb-2" data-aos="fade-up">
                 <h2 class="display-6">Comprehensive Intellectual Property Solutions</h2>
-                <p class="text-secondary mx-auto mt-3" style="max-width: 700px;">Protecting innovations, brands, and inventions through strategic legal expertise.</p>
+                <p class="text-secondary mx-auto mt-3" style="max-width: 700px;">Protecting innovations, brands, and
+                    inventions through strategic legal expertise.</p>
             </div>
-            
+
             <div class="row g-4">
                 <!-- Card 1 -->
                 <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="100">
                     <div class="premium-card p-0 h-100 d-flex flex-column border-color">
-                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80" alt="Patent Filing" class="img-fluid w-100" style="height: 200px; object-fit: cover;">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80"
+                            alt="Patent Filing" class="img-fluid w-100" style="height: 200px; object-fit: cover;">
                         <div class="p-4 d-flex flex-column flex-grow-1">
                             <h3 class="h5 mb-3">Patent Filing</h3>
-                            <p class="text-secondary small mb-4 flex-grow-1">Secure exclusive rights to your inventions with our rigorous patent prosecution and filing services.</p>
-                            <a href="services.html" class="text-accent fw-bold mt-auto d-inline-flex align-items-center gap-2">Learn More <i class="bi bi-arrow-right"></i></a>
+                            <p class="text-secondary small mb-4 flex-grow-1">Secure exclusive rights to your inventions
+                                with our rigorous patent prosecution and filing services.</p>
+                            <a href="services.html"
+                                class="text-accent fw-bold mt-auto d-inline-flex align-items-center gap-2">Learn More <i
+                                    class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Card 2 -->
                 <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="200">
                     <div class="premium-card p-0 h-100 d-flex flex-column border-color">
-                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80" alt="Trademark Protection" class="img-fluid w-100" style="height: 200px; object-fit: cover;">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80"
+                            alt="Trademark Protection" class="img-fluid w-100"
+                            style="height: 200px; object-fit: cover;">
                         <div class="p-4 d-flex flex-column flex-grow-1">
                             <h3 class="h5 mb-3">Trademark Protection</h3>
-                            <p class="text-secondary small mb-4 flex-grow-1">Safeguard your brand identity, logos, and corporate assets from infringement across all markets.</p>
-                            <a href="services.html" class="text-accent fw-bold mt-auto d-inline-flex align-items-center gap-2">Learn More <i class="bi bi-arrow-right"></i></a>
+                            <p class="text-secondary small mb-4 flex-grow-1">Safeguard your brand identity, logos, and
+                                corporate assets from infringement across all markets.</p>
+                            <a href="services.html"
+                                class="text-accent fw-bold mt-auto d-inline-flex align-items-center gap-2">Learn More <i
+                                    class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -625,11 +724,16 @@
                 <!-- Card 3 -->
                 <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="300">
                     <div class="premium-card p-0 h-100 d-flex flex-column border-color">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80" alt="IP Strategy Consulting" class="img-fluid w-100" style="height: 200px; object-fit: cover;">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80"
+                            alt="IP Strategy Consulting" class="img-fluid w-100"
+                            style="height: 200px; object-fit: cover;">
                         <div class="p-4 d-flex flex-column flex-grow-1">
                             <h3 class="h5 mb-3">IP Strategy Consulting</h3>
-                            <p class="text-secondary small mb-4 flex-grow-1">Develop proactive strategies to commercialize your intellectual property and maximize portfolio ROI.</p>
-                            <a href="services.html" class="text-accent fw-bold mt-auto d-inline-flex align-items-center gap-2">Learn More <i class="bi bi-arrow-right"></i></a>
+                            <p class="text-secondary small mb-4 flex-grow-1">Develop proactive strategies to
+                                commercialize your intellectual property and maximize portfolio ROI.</p>
+                            <a href="services.html"
+                                class="text-accent fw-bold mt-auto d-inline-flex align-items-center gap-2">Learn More <i
+                                    class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -637,11 +741,16 @@
                 <!-- Card 4 -->
                 <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
                     <div class="premium-card p-0 h-100 d-flex flex-column border-color">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="Global Patent Registration" class="img-fluid w-100" style="height: 200px; object-fit: cover;">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80"
+                            alt="Global Patent Registration" class="img-fluid w-100"
+                            style="height: 200px; object-fit: cover;">
                         <div class="p-4 d-flex flex-column flex-grow-1">
                             <h3 class="h5 mb-3">Global Registration</h3>
-                            <p class="text-secondary small mb-4 flex-grow-1">Navigate complex international jurisdictions with our streamlined global PCT filing network.</p>
-                            <a href="services.html" class="text-accent fw-bold mt-auto d-inline-flex align-items-center gap-2">Learn More <i class="bi bi-arrow-right"></i></a>
+                            <p class="text-secondary small mb-4 flex-grow-1">Navigate complex international
+                                jurisdictions with our streamlined global PCT filing network.</p>
+                            <a href="services.html"
+                                class="text-accent fw-bold mt-auto d-inline-flex align-items-center gap-2">Learn More <i
+                                    class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -654,37 +763,54 @@
         <div class="container">
             <div class="text-center mb-5 pb-2" data-aos="fade-up">
                 <h2 class="display-6">Expertise Across <span class="text-gradient">All IP Domains</span></h2>
-                <p class="text-secondary mx-auto mt-3" style="max-width: 600px;">We provide end-to-end intellectual property services tailored for visionary tech companies, research institutions, and individual inventors.</p>
+                <p class="text-secondary mx-auto mt-3" style="max-width: 600px;">We provide end-to-end intellectual
+                    property services tailored for visionary tech companies, research institutions, and individual
+                    inventors.</p>
             </div>
 
             <div class="row g-4 justify-content-center">
                 <!-- Item 1 -->
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="bento-item h-100">
-                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=600&q=80" alt="Patent Drafting" class="img-fluid rounded-4 mb-4" style="height: 180px; width: 100%; object-fit: cover; box-shadow: var(--shadow-sm);">
+                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=600&q=80"
+                            alt="Patent Drafting" class="img-fluid rounded-4 mb-4"
+                            style="height: 180px; width: 100%; object-fit: cover; box-shadow: var(--shadow-sm);">
                         <h3 class="h5">Patent Drafting</h3>
-                        <p class="text-secondary small">Meticulous drafting by technical experts ensuring maximum claim scope and defensibility globally.</p>
-                        <a href="service-details.html" class="text-accent fw-bold mt-auto d-inline-flex align-items-center gap-2">Details <i class="bi bi-arrow-right"></i></a>
+                        <p class="text-secondary small">Meticulous drafting by technical experts ensuring maximum claim
+                            scope and defensibility globally.</p>
+                        <a href="service-details.html"
+                            class="text-accent fw-bold mt-auto d-inline-flex align-items-center gap-2">Details <i
+                                class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <!-- Item 2 -->
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="bento-item h-100">
-                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&q=80" alt="International PCT" class="img-fluid rounded-4 mb-4" style="height: 180px; width: 100%; object-fit: cover; box-shadow: var(--shadow-sm);">
+                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&q=80"
+                            alt="International PCT" class="img-fluid rounded-4 mb-4"
+                            style="height: 180px; width: 100%; object-fit: cover; box-shadow: var(--shadow-sm);">
                         <h3 class="h5">International PCT</h3>
-                        <p class="text-secondary small">Streamlined international filing strategies via the Patent Cooperation Treaty.</p>
-                        <a href="service-details.html" class="text-primary-brand fw-bold mt-auto d-inline-flex align-items-center gap-2">Details <i class="bi bi-arrow-right"></i></a>
+                        <p class="text-secondary small">Streamlined international filing strategies via the Patent
+                            Cooperation Treaty.</p>
+                        <a href="service-details.html"
+                            class="text-accent fw-bold mt-auto d-inline-flex align-items-center gap-2">Details <i
+                                class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <!-- Item 3 -->
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="bento-item h-100">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Portfolio Management" class="img-fluid rounded-4 mb-4" style="height: 180px; width: 100%; object-fit: cover; box-shadow: var(--shadow-sm);">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80"
+                            alt="Portfolio Management" class="img-fluid rounded-4 mb-4"
+                            style="height: 180px; width: 100%; object-fit: cover; box-shadow: var(--shadow-sm);">
                         <h3 class="h5">Portfolio Management</h3>
-                        <p class="text-secondary small">Active management of IP assets, renewal tracking, and strategic advisory.</p>
-                        <a href="service-details.html" class="text-primary-brand fw-bold mt-auto d-inline-flex align-items-center gap-2">Details <i class="bi bi-arrow-right"></i></a>
+                        <p class="text-secondary small">Active management of IP assets, renewal tracking, and strategic
+                            advisory.</p>
+                        <a href="service-details.html"
+                            class="text-accent fw-bold mt-auto d-inline-flex align-items-center gap-2">Details <i
+                                class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -696,7 +822,8 @@
         <div class="container">
             <div class="text-center mb-5 pb-4" data-aos="fade-up">
                 <h2 class="display-6">Streamlined Filing Protocol</h2>
-                <p class="text-secondary mx-auto" style="max-width: 600px;">From initial disclosure to granted patent, our structured approach ensures precision at every step.</p>
+                <p class="text-secondary mx-auto" style="max-width: 600px;">From initial disclosure to granted patent,
+                    our structured approach ensures precision at every step.</p>
             </div>
 
             <div class="timeline">
@@ -704,7 +831,9 @@
                     <div class="timeline-number">1</div>
                     <div class="premium-card bg-primary p-4 p-md-5">
                         <h4 class="mb-3 text-white">Invention Disclosure</h4>
-                        <p class="text-white opacity-75 mb-0">Upload your technical disclosure securely via our client portal. Our assigned technical specialist conducts an immediate preliminary review to ensure all critical details are captured before drafting begins.</p>
+                        <p class="text-white opacity-75 mb-0">Upload your technical disclosure securely via our client
+                            portal. Our assigned technical specialist conducts an immediate preliminary review to ensure
+                            all critical details are captured before drafting begins.</p>
                     </div>
                 </div>
 
@@ -712,7 +841,9 @@
                     <div class="timeline-number">2</div>
                     <div class="premium-card bg-primary p-4 p-md-5">
                         <h4 class="mb-3 text-white">Prior Art & Strategy</h4>
-                        <p class="text-white opacity-75 mb-0">We perform a comprehensive global prior art search to assess patentability. Based on the findings, we define the optimal claim strategy to maximize protection scope while minimizing rejection risks.</p>
+                        <p class="text-white opacity-75 mb-0">We perform a comprehensive global prior art search to
+                            assess patentability. Based on the findings, we define the optimal claim strategy to
+                            maximize protection scope while minimizing rejection risks.</p>
                     </div>
                 </div>
 
@@ -720,7 +851,9 @@
                     <div class="timeline-number">3</div>
                     <div class="premium-card bg-primary p-4 p-md-5">
                         <h4 class="mb-3 text-white">Drafting & Filing</h4>
-                        <p class="text-white opacity-75 mb-0">Our patent attorneys draft precise claims and detailed specifications. After your review and approval, we handle electronic filing with the USPTO, EPO, WIPO, or relevant national offices.</p>
+                        <p class="text-white opacity-75 mb-0">Our patent attorneys draft precise claims and detailed
+                            specifications. After your review and approval, we handle electronic filing with the USPTO,
+                            EPO, WIPO, or relevant national offices.</p>
                     </div>
                 </div>
             </div>
@@ -732,9 +865,13 @@
         <div class="container">
             <div class="metrics-wrapper" data-aos="zoom-in">
                 <!-- Abstract Glows -->
-                <div style="position:absolute; top:-20%; right:-10%; width:500px; height:500px; background:var(--brand-accent); border-radius:50%; filter:blur(150px); opacity:0.15;"></div>
-                <div style="position:absolute; bottom:-20%; left:-10%; width:400px; height:400px; background:#ffffff; border-radius:50%; filter:blur(150px); opacity:0.05;"></div>
-                
+                <div
+                    style="position:absolute; top:-20%; right:-10%; width:500px; height:500px; background:var(--brand-accent); border-radius:50%; filter:blur(150px); opacity:0.15;">
+                </div>
+                <div
+                    style="position:absolute; bottom:-20%; left:-10%; width:400px; height:400px; background:#ffffff; border-radius:50%; filter:blur(150px); opacity:0.05;">
+                </div>
+
                 <div class="row g-5">
                     <div class="col-md-3 col-6 metric-card">
                         <div class="metric-number"><span class="counter-val" data-target="98">0</span>%</div>
@@ -771,11 +908,15 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="testimonial-card h-100" data-aos="fade-up" data-aos-delay="100">
                         <div class="text-accent mb-3 fs-5">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i>
                         </div>
-                        <p class="fs-5 fw-medium text-primary-brand mb-0">"The SaaS portal completely transformed how we manage our startup's IP portfolio. We never miss a deadline and the transparency is incredible."</p>
+                        <p class="fs-5 fw-medium text-primary-brand mb-0">"The SaaS portal completely transformed how we
+                            manage our startup's IP portfolio. We never miss a deadline and the transparency."</p>
                         <div class="client-info mt-auto pt-4">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="David Chen" class="client-img">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="David Chen"
+                                class="client-img">
                             <div>
                                 <h6 class="mb-0 fw-bold">David Chen</h6>
                                 <small class="text-secondary">CTO, TechVision AI</small>
@@ -788,11 +929,15 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="testimonial-card h-100" data-aos="fade-up" data-aos-delay="200">
                         <div class="text-accent mb-3 fs-5">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i>
                         </div>
-                        <p class="fs-5 fw-medium text-primary-brand mb-0">"Their technical expertise in biotech patents is unmatched. The drafting was flawless and withstood intense scrutiny from examiners."</p>
+                        <p class="fs-5 fw-medium text-primary-brand mb-0">"Their technical expertise in biotech patents
+                            is unmatched. The drafting was flawless and withstood intense scrutiny."</p>
                         <div class="client-info mt-auto pt-4">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Jenkins" class="client-img">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Jenkins"
+                                class="client-img">
                             <div>
                                 <h6 class="mb-0 fw-bold">Dr. Sarah Jenkins</h6>
                                 <small class="text-secondary">Lead Researcher, BioGen</small>
@@ -805,11 +950,16 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="testimonial-card h-100" data-aos="fade-up" data-aos-delay="300">
                         <div class="text-accent mb-3 fs-5">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i>
                         </div>
-                        <p class="fs-5 fw-medium text-primary-brand mb-0">"Filing international PCTs used to be a nightmare. Novus IP handled everything across 15 countries flawlessly through their platform."</p>
+                        <p class="fs-5 fw-medium text-primary-brand mb-0">"Filing international PCTs used to be a
+                            nightmare. Novus IP handled everything across 15 countries flawlessly through their
+                            platform."</p>
                         <div class="client-info mt-auto pt-4">
-                            <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Marcus Thorne" class="client-img">
+                            <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Marcus Thorne"
+                                class="client-img">
                             <div>
                                 <h6 class="mb-0 fw-bold">Marcus Thorne</h6>
                                 <small class="text-secondary">VP Eng, Quantum Mechanics</small>
@@ -826,14 +976,19 @@
         <div class="container position-relative z-2">
             <div class="cta-box" data-aos="fade-up">
                 <!-- Abstract Glow -->
-                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:800px; height:800px; background:radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%); pointer-events:none;"></div>
-                
+                <div
+                    style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:800px; height:800px; background:radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%); pointer-events:none;">
+                </div>
+
                 <h2 class="text-white display-5 fw-bold mb-4 position-relative z-2">Ready to Secure Your Future?</h2>
-                <p class="text-white opacity-75 fs-5 mb-5 mx-auto position-relative z-2" style="max-width: 600px;">Schedule a confidential consultation with our lead patent attorneys to discuss your filing strategy.</p>
-                
+                <p class="text-white opacity-75 fs-5 mb-5 mx-auto position-relative z-2" style="max-width: 600px;">
+                    Schedule a confidential consultation with our lead patent attorneys to discuss your filing strategy.
+                </p>
+
                 <div class="d-flex justify-content-center gap-4 flex-wrap position-relative z-2">
-                    <a href="signup.html" class="btn-premium" style="background:var(--brand-accent); color:#000;">Book Consultation</a>
-                    <a href="contact.html" class="btn-premium outline text-white border-white">Contact Firm</a>
+                    <a href="signup.html" class="btn-premium" style="background:var(--brand-accent); color:#000;">Book
+                        Consultation</a>
+                    <a href="contact.html" class="btn-premium outline text-white">Contact Firm</a>
                 </div>
             </div>
         </div>
@@ -852,7 +1007,7 @@
                             <path d="M12 8v4"></path>
                             <path d="M12 16h.01"></path>
                         </svg>
-                        Novus<span>IP</span>
+                        Novus <span>IP</span>
                     </a>
                     <p class="mb-4">Premium intellectual property management combining top-tier legal expertise with a
                         modern SaaS dashboard.</p>

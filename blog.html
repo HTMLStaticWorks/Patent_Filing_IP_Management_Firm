@@ -117,12 +117,27 @@
 
         /* Newsletter */
         .newsletter-box {
-            background: linear-gradient(135deg, var(--brand-indigo) 0%, #1e293b 100%);
+            background: linear-gradient(135deg, var(--brand-indigo, #4F46E5) 0%, #1e293b 100%);
             border-radius: 20px;
             padding: 60px 40px;
             color: white;
             text-align: center;
             box-shadow: var(--shadow-premium);
+        }
+
+        .newsletter-box .form-control {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: #ffffff !important;
+        }
+
+        .newsletter-box .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        .newsletter-box .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.2) !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
@@ -139,7 +154,7 @@
                     <path d="M12 8v4"></path>
                     <path d="M12 16h.01"></path>
                 </svg>
-                Novus<span>IP</span>
+                Novus <span>IP</span>
             </a>
 
             <nav class="main-nav">
@@ -157,7 +172,7 @@
                         <i class="bi bi-moon"></i>
                     </button>
                     <button class="icon-btn rtl-toggle-btn" title="Toggle RTL">
-                        <i class="bi bi-text-right"></i>
+                        <i class="bi bi-globe"></i>
                     </button>
                     <a href="signup.html" class="btn-premium primary w-100 text-center">Sign Up</a>
                 </div>
@@ -168,7 +183,7 @@
                     <i class="bi bi-moon"></i>
                 </button>
                 <button class="icon-btn rtl-toggle-btn d-none d-xl-flex" title="Toggle RTL">
-                    <i class="bi bi-text-right"></i>
+                    <i class="bi bi-globe"></i>
                 </button>
                 <a href="signup.html" class="btn-premium primary d-none d-xl-flex">Sign Up</a>
                 <button class="icon-btn mobile-toggle">
@@ -311,14 +326,13 @@
             <div class="newsletter-box" data-aos="zoom-in">
                 <i class="bi bi-envelope-paper display-4 text-indigo mb-3"></i>
                 <h2 class="text-white mb-3">Stay Ahead of the Curve</h2>
-                <p class="lead opacity-75 mx-auto mb-5" style="max-width: 500px;">Get monthly updates on critical IP
+                <p class="text-white lead opacity-75 mx-auto mb-5" style="max-width: 500px;">Get monthly updates on critical IP
                     case law and filing strategies delivered directly to your inbox.</p>
 
                 <form class="mx-auto" style="max-width: 500px;">
-                    <div class="input-group input-group-lg">
-                        <input type="email" class="form-control border-0" placeholder="Your Email Address" required>
-                        <button class="btn btn-primary" type="submit"
-                            style="background:var(--brand-indigo); color:var(--brand-indigo); border:none; font-weight:600;">Subscribe</button>
+                    <div class="d-flex flex-column flex-sm-row gap-2">
+                        <input type="email" class="form-control form-control-lg border-0 rounded-3 flex-grow-1" placeholder="Your Email Address" required>
+                        <button class="btn btn-light btn-lg rounded-3 px-4 fw-bold text-indigo" type="submit">Subscribe</button>
                     </div>
                 </form>
             </div>
@@ -338,7 +352,7 @@
                             <path d="M12 8v4"></path>
                             <path d="M12 16h.01"></path>
                         </svg>
-                        Novus<span>IP</span>
+                        Novus <span>IP</span>
                     </a>
                     <p class="mb-4">Premium intellectual property management combining top-tier legal expertise with a
                         modern SaaS dashboard.</p>

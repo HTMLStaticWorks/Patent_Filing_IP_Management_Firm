@@ -72,6 +72,20 @@
             color: var(--text-primary);
         }
         
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+        
+        [dir="rtl"] .password-toggle {
+            right: auto;
+            left: 15px;
+        }
+        
         .social-btn {
             border: 1px solid var(--border-color);
             background: var(--bg-primary);
@@ -99,14 +113,22 @@
         <!-- Form Side -->
         <div class="auth-form-side order-lg-1">
             <div class="auth-toggles">
-                <button class="icon-btn" id="theme-toggle"><i class="bi bi-moon"></i></button>
-                <button class="icon-btn" id="rtl-toggle"><i class="bi bi-text-right"></i></button>
+                <button class="icon-btn theme-toggle-btn" title="Toggle Theme"><i class="bi bi-moon"></i></button>
+                <button class="icon-btn rtl-toggle-btn" title="Toggle RTL"><i class="bi bi-globe"></i></button>
             </div>
             
             <div class="premium-card-auth" data-aos="fade-up" data-aos-duration="800">
-                <a href="index.html" class="logo mb-4 d-block text-center fs-2">
-                    <i class="bi bi-shield-check"></i> Novus<span>IP</span>
-                </a>
+                <div class="mb-4 d-flex justify-content-center">
+                    <a href="index.html" class="logo">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="text-indigo" style="margin-right:8px">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="M12 8v4"></path>
+                            <path d="M12 16h.01"></path>
+                        </svg>
+                        Novus <span>IP</span>
+                    </a>
+                </div>
                 
                 <h4 class="fw-bold mb-1 text-center">Create Client Account</h4>
                 <p class="text-secondary text-center mb-4">Set up your dashboard access</p>
@@ -124,11 +146,17 @@
                     
                     <div class="mb-3">
                         <label class="form-label text-secondary small fw-bold">Password</label>
-                        <input type="password" class="form-control" required placeholder="Create password">
+                        <div class="position-relative">
+                            <input type="password" class="form-control" id="pwd1" required placeholder="Create password">
+                            <i class="bi bi-eye password-toggle" onclick="togglePassword('pwd1', this)"></i>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label text-secondary small fw-bold">Confirm Password</label>
-                        <input type="password" class="form-control" required placeholder="Confirm password">
+                        <div class="position-relative">
+                            <input type="password" class="form-control" id="pwd2" required placeholder="Confirm password">
+                            <i class="bi bi-eye password-toggle" onclick="togglePassword('pwd2', this)"></i>
+                        </div>
                     </div>
                     
                     <div class="mb-4 form-check">
@@ -167,5 +195,19 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        function togglePassword(inputId, icon) {
+            const pwdInput = document.getElementById(inputId);
+            if (pwdInput.type === 'password') {
+                pwdInput.type = 'text';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            } else {
+                pwdInput.type = 'password';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            }
+        }
+    </script>
 </body>
 </html>
