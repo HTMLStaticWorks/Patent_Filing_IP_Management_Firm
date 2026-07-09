@@ -44,9 +44,17 @@
         }
 
         .split-right {
-            height: calc(100vh - var(--header-height));
+            height: calc(100vh - 80px);
+            min-height: 400px;
             background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
             position: relative;
+        }
+        
+        @media (max-width: 991.98px) {
+            .split-right {
+                height: 50vh;
+                min-height: 300px;
+            }
         }
 
         .split-right::after {
@@ -61,7 +69,7 @@
 
         /* 2. Global Map */
         .map-section {
-            padding: 100px 0;
+            padding: 100px 0 20px 0;
             position: relative;
             overflow: hidden;
         }
@@ -116,7 +124,7 @@
 
         /* 3. Industry Expertise */
         .expertise-section {
-            padding: 120px 0;
+            padding: 20px 0 120px 0;
             background: var(--bg-secondary);
         }
 
